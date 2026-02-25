@@ -28,6 +28,24 @@ document.querySelectorAll('a, button, .cursor-none').forEach(el => {
     });
 });
 
+// Typewriter Function (Added)
+function initTypewriter() {
+    const text = "সেবাই আমাদের ব্রত, আত্মোৎসর্গ আমাদের দীক্ষা";
+    const element = document.getElementById("typewriter-text");
+    if(!element) return;
+    element.innerHTML = '';
+    let i = 0;
+    
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, 80); // Speed of typing
+        }
+    }
+    setTimeout(type, 500); // Delay before starting
+}
+
 // Preloader & Confetti
 window.addEventListener('load', () => {
     setTimeout(() => {
@@ -36,6 +54,7 @@ window.addEventListener('load', () => {
         setTimeout(() => { 
             preloader.style.display = 'none'; 
             triggerConfetti(); 
+            initTypewriter(); // Call Typewriter when preloader finishes
             
             gsap.fromTo(".hero-element", 
                 { y: 30, opacity: 0 }, 
@@ -81,7 +100,7 @@ gsap.utils.toArray('.timeline-node-green').forEach((node) => {
 gsap.utils.toArray('.timeline-content-left').forEach((card) => { gsap.fromTo(card, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out", scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" } }); });
 gsap.utils.toArray('.timeline-content-right').forEach((card) => { gsap.fromTo(card, { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out", scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" } }); });
 
-// Stagger Sections (Updated to match restored stat-box)
+// Stagger Sections
 const sectionsToStagger = ['.stat-box', '#mulniti', '#shakha', '#poricalona', '#proshikkhon', '#karyokram', '#sommanona', '#bhobisshot'];
 sectionsToStagger.forEach(sec => {
     gsap.fromTo(`${sec}.gsap-stagger, ${sec} .gsap-stagger`, 
