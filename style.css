@@ -34,7 +34,7 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Fix for Text Clipping - Added line-height & padding */
+/* Fix for Text Clipping */
 .font-display { 
     font-family: 'Noto Serif Bengali', serif; 
     line-height: 1.4;
@@ -90,31 +90,33 @@ body {
     100% { transform: translateY(0px); }
 }
 
-/* iPhone Widget Stats (Abstract Blob) */
-.ios-widget {
-    background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border-radius: 20px; padding: 15px; position: relative; overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 106, 78, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+/* --- STAT BOX (Green Shiny Effect) --- */
+.stat-box {
+    background: linear-gradient(135deg, #004d39, #008f6b, #006A4E, #004d39);
+    background-size: 300% 300%;
+    animation: moveGradient 6s ease infinite;
+    color: white;
+    border-radius: 20px;
+    padding: 15px;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     height: 120px;
+    box-shadow: 0 10px 30px rgba(0, 106, 78, 0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+    position: relative; overflow: hidden;
     transition: transform 0.3s;
 }
-.ios-widget:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(0, 106, 78, 0.08); }
-.blob-bg {
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at 50% 120%, rgba(209,250,229,0.8), rgba(240,253,244,0.5), transparent 70%);
-    background-size: 200% 200%;
-    animation: blobMove 6s ease-in-out infinite alternate;
-    opacity: 0.9;
+.stat-box:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0, 106, 78, 0.4); }
+/* Shiny Glare Effect */
+.stat-box::before {
+    content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%;
+    background: linear-gradient(rgba(255,255,255,0.2), transparent);
+    border-radius: 50%; transform: rotate(45deg); pointer-events: none;
 }
-.delay-1 { animation-delay: -2s; background: radial-gradient(circle at 20% 120%, rgba(209,250,229,0.8), transparent 60%); }
-.delay-2 { animation-delay: -4s; background: radial-gradient(circle at 80% 120%, rgba(236,252,203,0.8), transparent 60%); }
-.delay-3 { animation-delay: -6s; background: radial-gradient(circle at 50% 120%, rgba(204,251,241,0.8), transparent 60%); }
 
-@keyframes blobMove {
-    0% { transform: translateY(0) scale(1); }
-    100% { transform: translateY(-15px) scale(1.1); }
+@keyframes moveGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Glass Card Upgrades */
