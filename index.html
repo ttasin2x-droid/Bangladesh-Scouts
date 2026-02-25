@@ -3,521 +3,483 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>বাংলাদেশ স্কাউটস | Bangladesh Scouts - Since 1972</title>
+    <title>বাংলাদেশ স্কাউটস - ইতিহাস ও ঐতিহ্য</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div id="preloader">
-        <div class="loader-ring">
-            <div class="loader-center">⚜️</div>
-        </div>
-        <h2 class="text-3xl font-display text-white font-bold mt-6 tracking-wider">বাংলাদেশ স্কাউটস</h2>
-        <p class="text-green-400 mt-3 text-sm font-medium tracking-widest uppercase animate-pulse">Loading Excellence...</p>
-    </div>
-
-    <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
-
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <nav class="nav-container" id="navbar">
-        <div class="flex justify-between items-center">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                <div class="w-10 h-6 bg-gradient-to-br from-green-600 to-green-800 rounded relative overflow-hidden shadow-lg border-2 border-white">
-                    <div class="absolute w-4 h-4 bg-red-600 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-inner"></div>
+    <div id="preloader">
+        <div class="scout-loader"><div class="loader-logo">⚜️</div></div>
+        <h2 class="text-2xl font-display text-white font-bold tracking-wider mt-3">বাংলাদেশ স্কাউটস</h2>
+        <p class="text-green-400 mt-2 text-xs font-medium tracking-widest uppercase animate-pulse">ইতিহাস ও ঐতিহ্য লোড হচ্ছে...</p>
+    </div>
+
+    <div class="progress-container"><div class="progress-bar-green" id="progressBar"></div></div>
+
+    <nav class="fixed w-full z-50 nav-custom py-3 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3 cursor-pointer float-anim" onclick="window.scrollTo(0,0)">
+                    <img src="photos/scout-logo.png" alt="Scout Logo" class="w-10 h-10 object-contain drop-shadow-md">
+                    <span class="text-xl font-bold gradient-text-green font-display drop-shadow-sm pt-1">বাংলাদেশ স্কাউটস</span>
                 </div>
-                <span class="text-xl font-bold text-gray-800 font-display">বাংলাদেশ স্কাউটস</span>
+                <div class="hidden lg:flex space-x-6 text-sm font-bold pt-1">
+                    <a href="#itihas" class="nav-link text-gray-800 hover:text-green-700 transition-colors">ইতিহাস</a>
+                    <a href="#mulniti" class="nav-link text-gray-800 hover:text-green-700 transition-colors">মূলনীতি</a>
+                    <a href="#shakha" class="nav-link text-gray-800 hover:text-green-700 transition-colors">শাখাসমূহ</a>
+                    <a href="#poricalona" class="nav-link text-gray-800 hover:text-green-700 transition-colors">পরিচালনা</a>
+                    <a href="#karyokram" class="nav-link text-gray-800 hover:text-green-700 transition-colors">কার্যক্রম</a>
+                    <a href="#sommanona" class="nav-link text-gray-800 hover:text-green-700 transition-colors">সম্মাননা</a>
+                </div>
+                <button id="mobileMenuBtn" class="lg:hidden text-green-700 focus:outline-none bg-green-50 p-2 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
             </div>
             
-            <div class="hidden lg:flex items-center gap-8">
-                <a href="#history" class="text-sm font-semibold text-gray-700 hover:text-green-700 transition-colors relative group">
-                    ইতিহাস
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all group-hover:w-full"></span>
-                </a>
-                <a href="#principles" class="text-sm font-semibold text-gray-700 hover:text-green-700 transition-colors relative group">
-                    মূলনীতি
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all group-hover:w-full"></span>
-                </a>
-                <a href="#branches" class="text-sm font-semibold text-gray-700 hover:text-green-700 transition-colors relative group">
-                    শাখাসমূহ
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all group-hover:w-full"></span>
-                </a>
-                <a href="#activities" class="text-sm font-semibold text-gray-700 hover:text-green-700 transition-colors relative group">
-                    কার্যক্রম
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all group-hover:w-full"></span>
-                </a>
-                <a href="#awards" class="text-sm font-semibold text-gray-700 hover:text-green-700 transition-colors relative group">
-                    সম্মাননা
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-green-600 transition-all group-hover:w-full"></span>
-                </a>
+            <div id="mobileMenu" class="lg:hidden flex flex-col mt-3 space-y-2 text-center text-sm font-bold border-t border-green-100 bg-white/95 backdrop-blur-lg rounded-b-xl shadow-lg absolute left-0 right-0 px-6 pb-4">
+                <a href="#itihas" class="block pt-3 text-gray-800 hover:text-green-700 mobile-link">ইতিহাস</a>
+                <a href="#mulniti" class="block text-gray-800 hover:text-green-700 mobile-link">মূলনীতি ও আইন</a>
+                <a href="#shakha" class="block text-gray-800 hover:text-green-700 mobile-link">শাখাসমূহ</a>
+                <a href="#poricalona" class="block text-gray-800 hover:text-green-700 mobile-link">সংগঠনিক কাঠামো</a>
+                <a href="#karyokram" class="block text-gray-800 hover:text-green-700 mobile-link">কার্যক্রম</a>
+                <a href="#sommanona" class="block text-gray-800 hover:text-green-700 mobile-link">সম্মাননা</a>
             </div>
-
-            <button class="lg:hidden text-gray-800" id="menuBtn">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
         </div>
     </nav>
 
-    <div class="overlay" id="overlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="absolute top-4 right-4 text-gray-600" id="closeMenu">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-        <div class="flex flex-col gap-6 mt-12">
-            <a href="#history" class="text-lg font-semibold text-gray-800 mobile-link">ইতিহাস</a>
-            <a href="#principles" class="text-lg font-semibold text-gray-800 mobile-link">মূলনীতি</a>
-            <a href="#branches" class="text-lg font-semibold text-gray-800 mobile-link">শাখাসমূহ</a>
-            <a href="#activities" class="text-lg font-semibold text-gray-800 mobile-link">কার্যক্রম</a>
-            <a href="#awards" class="text-lg font-semibold text-gray-800 mobile-link">সম্মাননা</a>
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-30 pointer-events-none">
+            <div class="absolute top-20 right-[15%] w-72 h-72 bg-green-400 rounded-full mix-blend-multiply filter blur-[60px] float-anim parallax-bg" data-speed="0.4"></div>
+            <div class="absolute top-40 left-[15%] w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-[60px] float-anim-delayed parallax-bg" data-speed="-0.2"></div>
+            <div class="absolute bottom-10 left-1/2 w-48 h-48 bg-red-200 rounded-full mix-blend-multiply filter blur-[40px] float-slow parallax-bg" data-speed="0.15"></div>
         </div>
-    </div>
 
-    <section class="hero-section">
-        <canvas id="hero-canvas"></canvas>
-        
-        <div class="hero-content px-6">
-            <div class="hero-badge reveal">
-                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                প্রতিষ্ঠিত ১৯৭২ • WOSM সদস্য ১৯৭৪
+        <div class="container mx-auto px-6 z-10 text-center mt-8">
+            <div class="inline-block mb-4 gsap-reveal hero-element" data-tilt data-tilt-max="15" data-tilt-speed="400">
+                <img src="photos/scout-logo.png" alt="Main Logo" class="w-24 h-24 object-contain drop-shadow-xl mx-auto float-anim">
             </div>
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-bold mb-5 font-display gradient-text-green drop-shadow-md gsap-reveal hero-element tracking-tight pb-2">বাংলাদেশ স্কাউটস</h1>
             
-            <h1 class="hero-title reveal font-display">
-                বাংলাদেশ স্কাউটস
-                <span class="block text-2xl md:text-4xl mt-4 text-gray-600 font-normal">সত্য, সুন্দর, ন্যায়ের পথে</span>
-            </h1>
-            
-            <p class="hero-subtitle reveal">
-                বাংলাদেশের বৃহত্তম যুব সংগঠন। ৫০ বছরের ঐতিহ্য ও গৌরবময় ইতিহাসের ধারক। 
-                আমরা গড়ছে নেতৃত্বের নতুন প্রজন্ম।
-            </p>
-            
-            <div class="flex flex-wrap justify-center gap-4 reveal">
-                <a href="#history" class="px-8 py-4 bg-gradient-to-r from-green-600 to-green-800 text-white rounded-full font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all flex items-center gap-2 group">
+            <div class="relative max-w-2xl mx-auto mb-8 gsap-reveal hero-element">
+                <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 text-8xl text-green-200 opacity-60 font-serif leading-none h-10 overflow-visible">"</span>
+                <p class="text-lg md:text-xl text-gray-800 font-display leading-relaxed bg-white/60 p-4 rounded-xl backdrop-blur-sm border border-white/50 shadow-sm pt-6 z-10 relative">
+                    স্বাধীনতার পর থেকে আজ পর্যন্ত—বাংলাদেশের বৃহত্তম যুব সংগঠনের গৌরবময় ইতিহাস ও ঐতিহ্যের পদযাত্রা
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3 mb-10 gsap-reveal hero-element">
+                <span class="badge-green pt-2"><img src="photos/scout-logo.png" class="w-4 h-4 mr-2 inline"> প্রতিষ্ঠিত: ১৯৭২</span>
+                <span class="badge-green pt-2"><img src="photos/scout-logo.png" class="w-4 h-4 mr-2 inline"> WOSM সদস্য: ১৯৭৪</span>
+                <span class="badge-green pt-2"><img src="photos/scout-logo.png" class="w-4 h-4 mr-2 inline"> সদস্য: ১৫+ লাখ</span>
+            </div>
+            <div class="gsap-reveal hero-element">
+                <a href="#itihas" class="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-800 text-white px-8 py-3.5 rounded-full font-bold text-base shadow-lg hover:shadow-xl transform hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group cursor-none pt-4">
+                    <span class="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-[shimmer_1s_forwards]"></span>
                     ইতিহাস অন্বেষণ করুন
-                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </a>
-                <a href="#activities" class="px-8 py-4 bg-white text-green-700 border-2 border-green-600 rounded-full font-bold hover:bg-green-50 transition-all">
-                    কার্যক্রম দেখুন
+                    <svg class="w-5 h-5 animate-bounce mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                 </a>
             </div>
+        </div>
+    </section>
 
-            <div class="hero-stats reveal">
-                <div class="hero-stat">
-                    <span class="hero-stat-number counter" data-target="2070376">০</span>
-                    <div class="hero-stat-label">মোট সদস্য (২০২৩)</div>
+    <section class="py-12 bg-white relative z-20 shadow-[0_-15px_30px_rgba(0,0,0,0.02)] rounded-t-[2rem]">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                <div class="stat-box compact gsap-stagger" data-tilt data-tilt-max="10"><div class="blob"></div><div class="relative z-10"><div class="text-3xl font-bold mb-1 counter drop-shadow-sm font-display pt-2" data-target="1972">০</div><div class="text-xs font-semibold opacity-95 tracking-wide pt-1">প্রতিষ্ঠার সাল</div></div></div>
+                <div class="stat-box compact gsap-stagger" data-tilt data-tilt-max="10"><div class="blob"></div><div class="relative z-10"><div class="text-3xl font-bold mb-1 counter drop-shadow-sm font-display pt-2" data-target="1974">০</div><div class="text-xs font-semibold opacity-95 tracking-wide pt-1">WOSM স্বীকৃতি</div></div></div>
+                <div class="stat-box compact gsap-stagger" data-tilt data-tilt-max="10"><div class="blob"></div><div class="relative z-10"><div class="text-3xl font-bold mb-1 drop-shadow-sm font-display pt-2">১৫+</div><div class="text-xs font-semibold opacity-95 tracking-wide pt-1">লাখ সদস্য</div></div></div>
+                <div class="stat-box compact gsap-stagger" data-tilt data-tilt-max="10"><div class="blob"></div><div class="relative z-10"><div class="text-3xl font-bold mb-1 counter drop-shadow-sm font-display pt-2" data-target="64">০</div><div class="text-xs font-semibold opacity-95 tracking-wide pt-1">জেলা কমিটি</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="itihas" class="py-24 relative overflow-hidden bg-gray-50/50">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#006A4E_1px,transparent_1px)] [background-size:20px_20px] parallax-bg" data-speed="0.1"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold font-display section-header gradient-text-green mb-3 pb-2">স্কাউটিংয়ের ইতিহাস</h2>
+                <p class="text-gray-600 text-base mt-3 font-medium pt-1">বিশ্ব স্কাউটিং থেকে স্বাধীন বাংলাদেশ</p>
+            </div>
+            <div class="timeline-container max-w-4xl mx-auto relative">
+                <div class="timeline-line-bg"></div>
+                <div class="timeline-line-fill" id="animatedTimelineLine"></div>
+
+                <div class="relative mb-20 timeline-row">
+                    <div class="timeline-node-green float-anim" style="top: 24px;"></div>
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div class="hidden md:block"></div>
+                        <div class="timeline-content-right">
+                            <div class="history-card p-6 rounded-2xl border-l-4 border-green-600 shadow-md bg-white hover:-translate-y-2 transition-transform duration-300" data-tilt data-tilt-max="6">
+                                <span class="text-green-800 font-bold text-sm bg-green-50 px-3 py-1 rounded-lg border border-green-100 inline-block mb-3 pt-1.5">১৯০৭</span>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900 font-display pt-1">বিশ্ব স্কাউটিংয়ের সূচনা</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm font-medium pt-1">লর্ড ব্যাডেন পাওয়েল (B-P) ইংল্যান্ডের ব্রাউনসি দ্বীপে ২০ জন কিশোরকে নিয়ে প্রথম স্কাউট ক্যাম্পের মাধ্যমে বিশ্ব স্কাউটিং আন্দোলনের সূচনা করেন।</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number counter" data-target="52">০</span>
-                    <div class="hero-stat-label">বছরের ঐতিহ্য</div>
+
+                <div class="relative mb-20 timeline-row">
+                    <div class="timeline-node-green float-anim-delayed" style="top: 24px;"></div>
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div class="md:text-right timeline-content-left">
+                            <div class="history-card p-6 rounded-2xl border-r-4 border-green-600 shadow-md bg-white hover:-translate-y-2 transition-transform duration-300" data-tilt data-tilt-max="6">
+                                <span class="text-green-800 font-bold text-sm bg-green-50 px-3 py-1 rounded-lg border border-green-100 inline-block mb-3 pt-1.5">১৯১৪</span>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900 font-display pt-1">ব্রিটিশ আমলে সূচনা</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm font-medium pt-1">বাংলাদেশ অঞ্চলে স্কাউটিং এর সূচনা হয় ১৯১৪ সালে। তৎকালীন পূর্ব বাংলায় ইংরেজ শাসকরা স্কাউটিং চালু করে। ঢাকা, চট্টগ্রাম ও কলকাতায় প্রথম স্কাউট দল গঠিত হয়।</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
                 </div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number counter" data-target="172">০</span>
-                    <div class="hero-stat-label">WOSM দেশ</div>
+
+                <div class="relative mb-20 timeline-row">
+                    <div class="timeline-node-green float-anim" style="top: 24px;"></div>
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div class="hidden md:block"></div>
+                        <div class="timeline-content-right">
+                            <div class="history-card p-6 rounded-2xl border-l-4 border-green-600 shadow-md bg-white hover:-translate-y-2 transition-transform duration-300" data-tilt data-tilt-max="6">
+                                <span class="text-green-800 font-bold text-sm bg-green-50 px-3 py-1 rounded-lg border border-green-100 inline-block mb-3 pt-1.5">১৯৪৭-১৯৭১</span>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900 font-display pt-1">পাকিস্তান আমল</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm font-medium pt-1">১৯৪৭ সালে দেশ বিভাগের পর পূর্ব পাকিস্তান স্কাউট অ্যাসোসিয়েশন গঠিত হয়। ১৯৫৮ সালে পাকিস্তান স্কাউট অ্যাসোসিয়েশনের অঙ্গ সংগঠন হিসেবে কার্যক্রম চলতে থাকে।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mb-20 timeline-row">
+                    <div class="timeline-node-green node-red float-anim-delayed" style="top: 24px; background: var(--bangladesh-red); border-color: white; box-shadow: 0 0 15px rgba(244, 42, 65, 0.6);"></div>
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div class="md:text-right timeline-content-left">
+                            <div class="history-card p-6 rounded-2xl border-r-4 border-red-500 shadow-md bg-red-50/30 hover:-translate-y-2 transition-transform duration-300" data-tilt data-tilt-max="6">
+                                <span class="text-red-700 font-bold text-sm bg-red-50 px-3 py-1 rounded-lg border border-red-100 inline-block mb-3 pt-1.5">৯ এপ্রিল ১৯৭২</span>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900 font-display pt-1">স্বাধীন বাংলাদেশে প্রতিষ্ঠা</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm font-medium pt-1">মহান স্বাধীনতা যুদ্ধের পর ৯ এপ্রিল ১৯৭২ সালে বাংলাদেশ বয় স্কাউট অ্যাসোসিয়েশন আনুষ্ঠানিকভাবে প্রতিষ্ঠিত হয়। প্রথম জাতীয় কমিশনার নিযুক্ত হন।</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                </div>
+
+                <div class="relative mb-20 timeline-row">
+                    <div class="timeline-node-green float-anim" style="top: 24px;"></div>
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div class="hidden md:block"></div>
+                        <div class="timeline-content-right">
+                            <div class="history-card p-6 rounded-2xl border-l-4 border-green-600 shadow-md bg-white hover:-translate-y-2 transition-transform duration-300" data-tilt data-tilt-max="6">
+                                <span class="text-green-800 font-bold text-sm bg-green-50 px-3 py-1 rounded-lg border border-green-100 inline-block mb-3 pt-1.5">১৯৭৪</span>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900 font-display pt-1">WOSM স্বীকৃতি</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm font-medium pt-1">১৯৭৪ সালের ১১ জুলাই বিশ্ব স্কাউট সংস্থার (WOSM) ১০৫তম পূর্ণ সদস্যপদ লাভ করে বাংলাদেশ। এশিয়া-প্যাসিফিক অঞ্চলের সক্রিয় সদস্য হিসেবে যাত্রা শুরু।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mb-20 timeline-row">
+                    <div class="timeline-node-green float-anim-delayed" style="top: 24px;"></div>
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div class="md:text-right timeline-content-left">
+                            <div class="history-card p-6 rounded-2xl border-r-4 border-green-600 shadow-md bg-white hover:-translate-y-2 transition-transform duration-300" data-tilt data-tilt-max="6">
+                                <span class="text-green-800 font-bold text-sm bg-green-50 px-3 py-1 rounded-lg border border-green-100 inline-block mb-3 pt-1.5">১৯৭৮</span>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900 font-display pt-1">গার্ল গাইডস যোগদান</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm font-medium pt-1">১৯৭৮ সালে বাংলাদেশ গার্ল গাইডস অ্যাসোসিয়েশন একীভূত হয়। এখন থেকে ছেলে ও মেয়ে উভয়ই বাংলাদেশ স্কাউটসের অংশ হয়ে ওঠে।</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block"></div>
+                    </div>
+                </div>
+
+                <div class="relative timeline-row">
+                    <div class="timeline-node-green node-yellow float-anim" style="top: 24px; background: #eab308; border-color: white; box-shadow: 0 0 15px rgba(234, 179, 8, 0.6);"></div>
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div class="hidden md:block"></div>
+                        <div class="timeline-content-right">
+                            <div class="history-card p-6 rounded-2xl border-l-4 border-yellow-500 shadow-md bg-yellow-50/30 hover:-translate-y-2 transition-transform duration-300" data-tilt data-tilt-max="6">
+                                <span class="text-yellow-700 font-bold text-sm bg-yellow-50 px-3 py-1 rounded-lg border border-yellow-100 inline-block mb-3 pt-1.5">২০১১</span>
+                                <h3 class="text-xl font-bold mb-2 text-gray-900 font-display pt-1">বাংলাদেশ স্কাউটস নামকরণ</h3>
+                                <p class="text-gray-600 leading-relaxed text-sm font-medium pt-1">২০১১ সালে সংগঠনের নাম পরিবর্তন করে "বাংলাদেশ স্কাউটস" রাখা হয়। যুগোপযোগী করে সংগঠনকে পুনর্গঠনের প্রক্রিয়া শুরু হয়।</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-white relative">
+    <section id="mulniti" class="py-24 bg-[#eef8f5] relative border-t border-b border-green-100">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                <div class="stat-card reveal">
-                    <div class="stat-number counter" data-target="1972">০</div>
-                    <div class="text-sm font-medium opacity-90">প্রতিষ্ঠার সাল</div>
-                </div>
-                <div class="stat-card reveal" style="transition-delay: 0.1s">
-                    <div class="stat-number counter" data-target="1974">০</div>
-                    <div class="text-sm font-medium opacity-90">WOSM স্বীকৃতি</div>
-                </div>
-                <div class="stat-card reveal" style="transition-delay: 0.2s">
-                    <div class="stat-number">২.২M+</div>
-                    <div class="text-sm font-medium opacity-90">সক্রিয় সদস্য</div>
-                </div>
-                <div class="stat-card reveal" style="transition-delay: 0.3s">
-                    <div class="stat-number counter" data-target="64">০</div>
-                    <div class="text-sm font-medium opacity-90">জেলা কমিটি</div>
-                </div>
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold font-display section-header gradient-text-green mb-3 pb-2">মূলনীতি ও আইন</h2>
             </div>
-        </div>
-    </section>
-
-    <section id="history" class="timeline-section bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="section-header reveal">
-                <span class="section-tag">ঐতিহাসিক পথচলা</span>
-                <h2 class="section-title">স্কাউটিংয়ের ইতিহাস</h2>
-                <p class="section-subtitle">১৯০৭ থেকে ২০২৪ - সময়ের পরিক্রমায় বাংলাদেশ স্কাউটস</p>
-            </div>
-
-            <div class="timeline-container">
-                <div class="timeline-line"></div>
-                <div class="timeline-progress" id="timelineProgress"></div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content card-3d">
-                        <div class="card-3d-inner">
-                            <span class="timeline-year">১৯০৭</span>
-                            <h3 class="text-xl font-bold mb-2 font-display text-gray-900">বিশ্ব স্কাউটিংয়ের সূচনা</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">লর্ড ব্যাডেন পাওয়েল ইংল্যান্ডের ব্রাউনসি দ্বীপে প্রথম স্কাউট ক্যাম্পের মাধ্যমে বিশ্ব স্কাউটিং আন্দোলনের সূচনা করেন।</p>
-                        </div>
+            <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-stretch">
+                <div class="bg-white p-6 rounded-2xl gsap-stagger border-t-4 border-green-500 shadow-md flex flex-col justify-center" data-tilt data-tilt-glare data-tilt-max-glare="0.1">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 font-display text-center pt-2">স্কাউট প্রতিজ্ঞা</h3>
+                    <div class="text-gray-800 text-lg font-semibold italic text-center pt-2 space-y-3 pb-2">
+                        <p>আমি আমার সম্মানের উপর নির্ভর করে প্রতিজ্ঞা করছি যে,</p>
+                        <p>আল্লাহ ও আমার দেশের প্রতি কর্তব্য পালন করতে,</p>
+                        <p>সর্বদা অপরকে সাহায্য করতে,</p>
+                        <p>স্কাউট আইন মেনে চলতে</p>
+                        <p>আমি আমার যথাসাধ্য চেষ্টা করব।</p>
                     </div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content card-3d">
-                        <div class="card-3d-inner">
-                            <span class="timeline-year">১৯১৪</span>
-                            <h3 class="text-xl font-bold mb-2 font-display text-gray-900">বাংলাদেশে স্কাউটিং</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">ঢাকার সেন্ট গ্রেগরি স্কুলে প্রথম স্কাউট দল গঠিত হয়। স্যার রবার্ট স্ক্যালনের উদ্যোগে যাত্রা শুরু।</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content card-3d">
-                        <div class="card-3d-inner">
-                            <span class="timeline-year">১৯৭২</span>
-                            <h3 class="text-xl font-bold mb-2 font-display text-gray-900">স্বাধীন বাংলাদেশে প্রতিষ্ঠা</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">৯ এপ্রিল ১৯৭২ সালে বাংলাদেশ বয় স্কাউট অ্যাসোসিয়েশন আনুষ্ঠানিকভাবে প্রতিষ্ঠিত হয়। মহান মুক্তিযুদ্ধের পর নতুন যাত্রা।</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content card-3d">
-                        <div class="card-3d-inner">
-                            <span class="timeline-year">১৯৭৪</span>
-                            <h3 class="text-xl font-bold mb-2 font-display text-gray-900">WOSM স্বীকৃতি</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">১১ জুলাই ১৯৭৪ সালে বিশ্ব স্কাউট সংস্থার ১০৫তম পূর্ণ সদস্যপদ লাভ করে বাংলাদেশ।</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-content card-3d">
-                        <div class="card-3d-inner">
-                            <span class="timeline-year" style="background: linear-gradient(135deg, #F42A41, #ff6b6b);">২০২৩</span>
-                            <h3 class="text-xl font-bold mb-2 font-display text-gray-900">২ মিলিয়ন সদস্য</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed">বর্তমানে ২০,৭০,৩৭৬ জন সদস্য নিয়ে WOSM-এর অন্যতম বৃহৎ সংগঠন। এশিয়া-প্যাসিফিক অঞ্চলে নেতৃত্বস্থানীয় ভূমিকা।</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="principles" class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="section-header reveal">
-                <span class="section-tag">মূল ভিত্তি</span>
-                <h2 class="section-title">প্রতিজ্ঞা ও আইন</h2>
-                <p class="section-subtitle">প্রতিটি স্কাউটের জীবনের চিরন্তন পাথেয়</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="glass-card reveal">
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center text-3xl mb-6 float-animation">✋</div>
-                    <h3 class="text-2xl font-bold mb-4 font-display text-gray-900">স্কাউট প্রতিজ্ঞা</h3>
-                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-100">
-                        <p class="text-gray-800 leading-relaxed text-sm font-medium italic">
-                            "আমি আমার সম্মানের উপর নির্ভর করে প্রতিজ্ঞা করছি যে,<br><br>
-                            আল্লাহ ও আমার দেশের প্রতি কর্তব্য পালন করতে,<br>
-                            সর্বদা অপরকে সাহায্য করতে,<br>
-                            স্কাউট আইন মেনে চলতে<br><br>
-                            আমি আমার যথাসাধ্য চেষ্টা করব।"
-                        </p>
-                    </div>
-                </div>
-
-                <div class="glass-card reveal" style="transition-delay: 0.1s">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center text-3xl mb-6 float-animation" style="animation-delay: 0.5s">📜</div>
-                    <h3 class="text-2xl font-bold mb-4 font-display text-gray-900">স্কাউট আইন</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white text-xs font-bold shrink-0">১</span>
-                            <span class="text-sm font-medium text-gray-700">স্কাউট আত্মমর্যাদায় বিশ্বাসী</span>
-                        </li>
-                        <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white text-xs font-bold shrink-0">২</span>
-                            <span class="text-sm font-medium text-gray-700">স্কাউট সকলের বন্ধু</span>
-                        </li>
-                        <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white text-xs font-bold shrink-0">৩</span>
-                            <span class="text-sm font-medium text-gray-700">স্কাউট বিনয়ী ও অনুগত</span>
-                        </li>
-                        <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white text-xs font-bold shrink-0">৪</span>
-                            <span class="text-sm font-medium text-gray-700">স্কাউট জীবের প্রতি সদয়</span>
-                        </li>
-                        <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white text-xs font-bold shrink-0">৫</span>
-                            <span class="text-sm font-medium text-gray-700">স্কাউট সদা প্রফুল্ল</span>
-                        </li>
-                        <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white text-xs font-bold shrink-0">৬</span>
-                            <span class="text-sm font-medium text-gray-700">স্কাউট মিতব্যয়ী</span>
-                        </li>
-                        <li class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">
-                            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-green-600 text-white text-xs font-bold shrink-0">৭</span>
-                            <span class="text-sm font-medium text-gray-700">স্কাউট চিন্তা, কথা ও কাজে নির্মল</span>
-                        </li>
+                
+                <div class="bg-white p-6 rounded-2xl gsap-stagger border-t-4 border-green-600 shadow-md flex flex-col justify-center" data-tilt data-tilt-glare data-tilt-max-glare="0.1">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4 font-display text-center pt-2">স্কাউট আইন</h3>
+                    <ul class="space-y-2 text-gray-800 font-semibold text-base pt-2">
+                        <li><span class="text-green-600 font-bold pr-1">১.</span> স্কাউট আত্মমর্যাদায় বিশ্বাসী</li>
+                        <li><span class="text-green-600 font-bold pr-1">২.</span> স্কাউট সকলের বন্ধু</li>
+                        <li><span class="text-green-600 font-bold pr-1">৩.</span> স্কাউট বিনয়ী ও অনুগত</li>
+                        <li><span class="text-green-600 font-bold pr-1">৪.</span> স্কাউট জীবের প্রতি সদয়</li>
+                        <li><span class="text-green-600 font-bold pr-1">৫.</span> স্কাউট সদা প্রফুল্ল</li>
+                        <li><span class="text-green-600 font-bold pr-1">৬.</span> স্কাউট মিতব্যয়ী</li>
+                        <li><span class="text-green-600 font-bold pr-1">৭.</span> স্কাউট চিন্তা, কথা ও কাজে নির্মল</li>
                     </ul>
                 </div>
 
-                <div class="glass-card reveal" style="transition-delay: 0.2s">
-                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-2xl flex items-center justify-center text-3xl mb-6 float-animation" style="animation-delay: 1s">🎯</div>
-                    <h3 class="text-2xl font-bold mb-4 font-display text-gray-900">মূলমন্ত্র (Motto)</h3>
+                <div class="bg-white p-6 rounded-2xl gsap-stagger border-t-4 border-green-700 shadow-md flex flex-col justify-center" data-tilt data-tilt-glare data-tilt-max-glare="0.1">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-5 font-display text-center pt-2">মূলমন্ত্র (Motto)</h3>
                     <div class="space-y-4">
-                        <div class="bg-blue-50 p-4 rounded-xl border-l-4 border-blue-500">
-                            <h4 class="font-bold text-blue-900 mb-1">কাব স্কাউট</h4>
-                            <p class="text-gray-800 font-semibold">"যথাসাধ্য চেষ্টা করা"</p>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-xl border-l-4 border-green-500">
-                            <h4 class="font-bold text-green-900 mb-1">স্কাউট</h4>
-                            <p class="text-gray-800 font-semibold">"সদা প্রস্তুত"</p>
-                        </div>
-                        <div class="bg-red-50 p-4 rounded-xl border-l-4 border-red-500">
-                            <h4 class="font-bold text-red-900 mb-1">রোভার স্কাউট</h4>
-                            <p class="text-gray-800 font-semibold">"সেবা"</p>
-                        </div>
+                        <div class="bg-blue-50/50 p-4 rounded-lg border-l-4 border-blue-500 flex justify-between items-center hover:-translate-y-1 transition-transform cursor-none"><span class="font-bold text-blue-900 text-lg pt-1">কাব স্কাউট</span><span class="text-gray-800 text-base font-semibold pt-1">"যথাসাধ্য চেষ্টা করা"</span></div>
+                        <div class="bg-green-50/50 p-4 rounded-lg border-l-4 border-green-500 flex justify-between items-center hover:-translate-y-1 transition-transform cursor-none"><span class="font-bold text-green-900 text-lg pt-1">স্কাউট</span><span class="text-gray-800 text-base font-semibold pt-1">"সদা প্রস্তুত"</span></div>
+                        <div class="bg-red-50/50 p-4 rounded-lg border-l-4 border-red-500 flex justify-between items-center hover:-translate-y-1 transition-transform cursor-none"><span class="font-bold text-red-900 text-lg pt-1">রোভার স্কাউট</span><span class="text-gray-800 text-base font-semibold pt-1">"সেবা"</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="branches" class="py-24 bg-gray-50">
+    <section id="shakha" class="py-24 bg-white relative">
         <div class="container mx-auto px-6">
-            <div class="section-header reveal">
-                <span class="section-tag">বয়সভিত্তিক কাঠামো</span>
-                <h2 class="section-title">স্কাউট শাখাসমূহ</h2>
-                <p class="section-subtitle">চারটি স্তরে বিভক্ত কার্যক্রম - শিশু থেকে যুবক</p>
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold font-display section-header gradient-text-green mb-3 pb-2">স্কাউট শাখাসমূহ</h2>
             </div>
-
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                <div class="glass-card text-center reveal group">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center text-4xl shadow-lg transform group-hover:scale-110 transition-transform">🐯</div>
-                    <h3 class="text-xl font-bold mb-2 font-display">কাব স্কাউট</h3>
-                    <div class="text-3xl font-black text-blue-600 mb-3">৬-১০+</div>
-                    <p class="text-gray-600 text-sm">মৌলিক দক্ষতা ও খেলাধুলার মাধ্যমে শিক্ষা। সৃজনশীলতা বিকাশ।</p>
+                <div class="bg-white rounded-2xl overflow-hidden gsap-stagger shadow-md hover:-translate-y-2 transition-transform duration-300 group" data-tilt data-tilt-max="8">
+                    <div class="h-32 overflow-hidden relative">
+                        <img src="photos/cub.jpg" alt="Cub Scout" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <p class="absolute bottom-2 right-3 text-2xl font-black text-white drop-shadow-md pt-1">৬-১০+</p>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 font-display pt-1">কাব স্কাউট</h3>
+                        <p class="text-gray-600 text-sm font-medium pt-1">বছর বয়সী শিশুদের জন্য। মৌলিক দক্ষতা ও খেলাধুলার মাধ্যমে শিক্ষা।</p>
+                    </div>
                 </div>
-
-                <div class="glass-card text-center reveal group" style="transition-delay: 0.1s">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center text-4xl shadow-lg transform group-hover:scale-110 transition-transform">⚜️</div>
-                    <h3 class="text-xl font-bold mb-2 font-display">স্কাউট</h3>
-                    <div class="text-3xl font-black text-green-600 mb-3">১১-১৬+</div>
-                    <p class="text-gray-600 text-sm">দক্ষতা উন্নয়ন, ক্যাম্পিং ও সামাজিক সেবা। নেতৃত্বের ভিত গড়ে ওঠে।</p>
-                </div>
-
-                <div class="glass-card text-center reveal group" style="transition-delay: 0.2s">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-red-400 to-red-600 rounded-2xl flex items-center justify-center text-4xl shadow-lg transform group-hover:scale-110 transition-transform">🛶</div>
-                    <h3 class="text-xl font-bold mb-2 font-display">রোভার স্কাউট</h3>
-                    <div class="text-3xl font-black text-red-600 mb-3">১৭-২৫</div>
-                    <p class="text-gray-600 text-sm">নেতৃত্ব উন্নয়ন, ক্যারিয়ার গঠন ও স্বেচ্ছাসেবামূলক কাজ।</p>
-                </div>
-
-                <div class="glass-card text-center reveal group" style="transition-delay: 0.3s">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center text-4xl shadow-lg transform group-hover:scale-110 transition-transform">👨‍🏫</div>
-                    <h3 class="text-xl font-bold mb-2 font-display">অ্যাডাল্ট লিডার</h3>
-                    <div class="text-3xl font-black text-purple-600 mb-3">২৫+</div>
-                    <p class="text-gray-600 text-sm">স্কাউট লিডার, ট্রেইনার ও কমিশনার হিসেবে সংগঠন পরিচালনা।</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="activities" class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="section-header reveal">
-                <span class="section-tag">বার্ষিক কার্যক্রম</span>
-                <h2 class="section-title">প্রধান ইভেন্টসমূহ</h2>
-                <p class="section-subtitle">জাতীয় ও আন্তর্জাতিক পর্যায়ে স্কাউটিং কার্যক্রম</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                <div class="activity-card reveal">
-                    <div class="activity-image">📻</div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">আন্তর্জাতিক</span>
-                        <h3 class="text-lg font-bold mt-3 mb-2 font-display">জোটা-জোটি (JOTA-JOTI)</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">প্রতি বছর অক্টোবরে বিশ্বের স্কাউটদের সাথে ডিজিটাল সংযোগ ও অভিজ্ঞতা বিনিময়।</p>
+                
+                <div class="bg-white rounded-2xl overflow-hidden gsap-stagger shadow-md hover:-translate-y-2 transition-transform duration-300 group" data-tilt data-tilt-max="8">
+                    <div class="h-32 overflow-hidden relative">
+                        <img src="photos/scout.jpg" alt="Scout" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <p class="absolute bottom-2 right-3 text-2xl font-black text-white drop-shadow-md pt-1">১১-১৬+</p>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 font-display pt-1">স্কাউট</h3>
+                        <p class="text-gray-600 text-sm font-medium pt-1">কিশোরদের জন্য। দক্ষতা উন্নয়ন, ক্যাম্পিং ও সামাজিক সেবা।</p>
                     </div>
                 </div>
 
-                <div class="activity-card reveal" style="transition-delay: 0.1s">
-                    <div class="activity-image" style="background: linear-gradient(135deg, #F42A41, #ff6b6b);">🏕️</div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full">জাতীয়</span>
-                        <h3 class="text-lg font-bold mt-3 mb-2 font-display">জাতীয় জাম্বোরি</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">সারাদেশের স্কাউটদের মিলনমেলা। ক্যাম্পিং, অ্যাডভেঞ্চার ও সাংস্কৃতিক অনুষ্ঠান।</p>
+                <div class="bg-white rounded-2xl overflow-hidden gsap-stagger shadow-md hover:-translate-y-2 transition-transform duration-300 group" data-tilt data-tilt-max="8">
+                    <div class="h-32 overflow-hidden relative">
+                        <img src="photos/rover.jpg" alt="Rover Scout" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <p class="absolute bottom-2 right-3 text-2xl font-black text-white drop-shadow-md pt-1">১৭-২৫</p>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 font-display pt-1">রোভার স্কাউট</h3>
+                        <p class="text-gray-600 text-sm font-medium pt-1">যুবকদের জন্য। নেতৃত্ব উন্নয়ন, ক্যারিয়ার ও স্বেচ্ছাসেবামূলক কাজ।</p>
                     </div>
                 </div>
 
-                <div class="activity-card reveal" style="transition-delay: 0.2s">
-                    <div class="activity-image" style="background: linear-gradient(135deg, #006A4E, #00a87a);">🤝</div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-green-600 bg-green-50 px-3 py-1 rounded-full">সেবা</span>
-                        <h3 class="text-lg font-bold mt-3 mb-2 font-display">দুর্যোগ ব্যবস্থাপনা</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">বন্যা, ঘূর্ণিঝড় ও দুর্যোগকালীন উদ্ধার, ত্রাণ ও পুনর্বাসন কার্যক্রম।</p>
+                <div class="bg-white rounded-2xl overflow-hidden gsap-stagger shadow-md hover:-translate-y-2 transition-transform duration-300 group" data-tilt data-tilt-max="8">
+                    <div class="h-32 overflow-hidden relative">
+                        <img src="photos/leader.jpg" alt="Adult Leader" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <p class="absolute bottom-2 right-3 text-2xl font-black text-white drop-shadow-md pt-1">২৫+</p>
                     </div>
-                </div>
-
-                <div class="activity-card reveal">
-                    <div class="activity-image" style="background: linear-gradient(135deg, #8B5CF6, #A78BFA);">🌳</div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">পরিবেশ</span>
-                        <h3 class="text-lg font-bold mt-3 mb-2 font-display">বৃক্ষরোপণ কর্মসূচি</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">২০৩০ সালের মধ্যে ১০ কোটি গাছ রোপণের লক্ষ্যে সারাদেশে বনায়ন কার্যক্রম।</p>
-                    </div>
-                </div>
-
-                <div class="activity-card reveal" style="transition-delay: 0.1s">
-                    <div class="activity-image" style="background: linear-gradient(135deg, #F59E0B, #FBBF24);">💉</div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-yellow-600 bg-yellow-50 px-3 py-1 rounded-full">স্বাস্থ্য</span>
-                        <h3 class="text-lg font-bold mt-3 mb-2 font-display">স্বাস্থ্যসেবা</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">টিকাদান কর্মসূচি, রক্তদান ও স্বাস্থ্য শিক্ষা কার্যক্রম পরিচালনা।</p>
-                    </div>
-                </div>
-
-                <div class="activity-card reveal" style="transition-delay: 0.2s">
-                    <div class="activity-image" style="background: linear-gradient(135deg, #EC4899, #F472B6);">📚</div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-pink-600 bg-pink-50 px-3 py-1 rounded-full">শিক্ষা</span>
-                        <h3 class="text-lg font-bold mt-3 mb-2 font-display">শিক্ষা সহায়তা</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed">দরিদ্র ছাত্রছাত্রীদের বৃত্তি প্রদান ও শিক্ষা সামগ্রী বিতরণ।</p>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 font-display pt-1">অ্যাডাল্ট লিডার</h3>
+                        <p class="text-gray-600 text-sm font-medium pt-1">স্কাউট লিডার, ট্রেইনার ও কমিশনার হিসেবে সংগঠন পরিচালনা।</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="awards" class="awards-section py-24">
+    <section id="poricalona" class="py-24 bg-[#eef8f5] relative border-t border-green-100 overflow-hidden">
         <div class="container mx-auto px-6 relative z-10">
-            <div class="section-header reveal">
-                <span class="section-tag" style="background: rgba(255,255,255,0.1); color: white; border-color: rgba(255,255,255,0.2);">সর্বোচ্চ স্বীকৃতি</span>
-                <h2 class="section-title text-white">সম্মাননা অ্যাওয়ার্ড</h2>
-                <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">অক্লান্ত পরিশ্রম ও ডেডিকেশনের স্বীকৃতি</p>
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold font-display section-header gradient-text-green mb-3 pb-2">সাংগঠনিক কাঠামো</h2>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                <div class="award-card reveal">
-                    <div class="award-icon">🌸</div>
-                    <h3 class="text-xl font-bold mb-2 font-display">শাপলা কাব অ্যাওয়ার্ড</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">কাব স্কাউটদের জন্য সর্বোচ্চ অ্যাওয়ার্ড। মহামান্য রাষ্ট্রপতি কর্তৃক প্রদত্ত।</p>
+            <div class="max-w-4xl mx-auto flex flex-col gap-4">
+                <div class="bg-white p-5 rounded-xl gsap-stagger shadow-sm hover:shadow-md transition-shadow flex items-center gap-4 border-l-4 border-green-700 cursor-none">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-700 text-xl font-bold shrink-0 pt-1">১</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 font-display pt-1">জাতীয় কাউন্সিল</h3>
+                        <p class="text-gray-600 text-sm font-medium pt-1">বাংলাদেশ স্কাউটসের সর্বোচ্চ নীতি-নির্ধারণী সংস্থা। প্রতি দুই বছরে একবার অনুষ্ঠিত হয়।</p>
+                    </div>
                 </div>
-
-                <div class="award-card reveal" style="transition-delay: 0.1s">
-                    <div class="award-icon" style="background: linear-gradient(135deg, #006A4E, #00a87a); animation-delay: 0.5s;">🏅</div>
-                    <h3 class="text-xl font-bold mb-2 font-display">প্রেসিডেন্ট'স স্কাউট</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">স্কাউট শাখার সর্বোচ্চ সম্মাননা (PS)। দক্ষতা ও সমাজসেবার অনন্য স্বীকৃতি।</p>
+                <div class="bg-white p-5 rounded-xl gsap-stagger shadow-sm hover:shadow-md transition-shadow flex items-center gap-4 border-l-4 border-green-600 ml-6 cursor-none">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-700 text-xl font-bold shrink-0 pt-1">২</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 font-display pt-1">জাতীয় এক্সিকিউটিভ কমিটি</h3>
+                        <p class="text-gray-600 text-sm font-medium pt-1">কাউন্সিলের ক্ষমতাবলে কার্যক্রম পরিচালনা করে। প্রধান কমিশনার এ কমিটির প্রধান।</p>
+                    </div>
                 </div>
-
-                <div class="award-card reveal" style="transition-delay: 0.2s">
-                    <div class="award-icon" style="background: linear-gradient(135deg, #F42A41, #ff6b6b); animation-delay: 1s;">👑</div>
-                    <h3 class="text-xl font-bold mb-2 font-display">প্রেসিডেন্ট'স রোভার</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">রোভারদের সর্বোচ্চ স্বীকৃতি (PRS)। কঠোর পরিশ্রমের মাধ্যমে অর্জন।</p>
+                <div class="bg-white p-5 rounded-xl gsap-stagger shadow-sm hover:shadow-md transition-shadow flex items-center gap-4 border-l-4 border-green-500 ml-12 cursor-none">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-700 text-xl font-bold shrink-0 pt-1">৩</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 font-display pt-1">জেলা ও উপজেলা কমিটি</h3>
+                        <p class="text-gray-600 text-sm font-medium pt-1">৬৪ জেলা ও ৪৯২+ উপজেলায় কমিটি তৃণমূল পর্যায়ে কার্যক্রম পরিচালনা করে।</p>
+                    </div>
                 </div>
-
-                <div class="award-card reveal" style="transition-delay: 0.3s">
-                    <div class="award-icon" style="background: linear-gradient(135deg, #C0C0C0, #E8E8E8); color: #333; animation-delay: 1.5s;">🥈</div>
-                    <h3 class="text-xl font-bold mb-2 font-display">রৌপ্য ব্যাঘ্র ও ইলিশ</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">অ্যাডাল্ট লিডারদের দীর্ঘমেয়াদী অবদানের জন্য সর্বোচ্চ সম্মাননা।</p>
-                </div>
-            </div>
-
-            <div class="mt-16 text-center reveal">
-                <div class="inline-block bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                    <h3 class="text-2xl font-bold mb-4 font-display">আন্তর্জাতিক স্বীকৃতি</h3>
-                    <div class="flex flex-wrap justify-center gap-8">
-                        <div class="text-center">
-                            <div class="text-4xl mb-2">🥉</div>
-                            <div class="font-bold text-lg">ব্রোঞ্জ ওলফ</div>
-                            <div class="text-sm text-gray-400">WOSM সর্বোচ্চ সম্মাননা</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-4xl mb-2">🐘</div>
-                            <div class="font-bold text-lg">সিলভার এলিফ্যান্ট</div>
-                            <div class="text-sm text-gray-400">ভারতের সর্বোচ্চ অ্যাওয়ার্ড</div>
-                        </div>
+                <div class="bg-white p-5 rounded-xl gsap-stagger shadow-sm hover:shadow-md transition-shadow flex items-center gap-4 border-l-4 border-green-400 ml-16 cursor-none">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-700 text-xl font-bold shrink-0 pt-1">৪</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 font-display pt-1">ইউনিট ও ওপেন গ্রুপ</h3>
+                        <p class="text-gray-600 text-sm font-medium pt-1">স্কুল-কলেজের ইউনিট এবং জেলাভিত্তিক ওপেন গ্রুপগুলো সরাসরি স্কাউটিং পরিচালনা করে।</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-white">
+    <section id="proshikkhon" class="py-24 relative bg-white border-t border-green-50">
         <div class="container mx-auto px-6">
-            <div class="max-w-5xl mx-auto">
-                <div class="glass-card p-8 md:p-12 reveal">
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <span class="section-tag mb-4 inline-block">বিশ্বজুড়ে বাংলাদেশ</span>
-                            <h2 class="text-3xl font-bold mb-4 font-display">আন্তর্জাতিক অংশগ্রহণ</h2>
-                            <p class="text-gray-600 mb-6 leading-relaxed">বাংলাদেশ স্কাউটস WOSM-এর সক্রিয় সদস্য। বিশ্ব জাম্বোরিতে অংশগ্রহণ করে আমরা আমাদের সংস্কৃতি ও মূল্যবোধ বিশ্বের সাথে ভাগ করে নিই।</p>
-                            
-                            <div class="space-y-4">
-                                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-xl">🇨🇦</div>
-                                    <div>
-                                        <div class="font-bold">১৯৭৯ - নিষ্কা, কানাডা</div>
-                                        <div class="text-sm text-gray-600">প্রথম বিশ্ব জাম্বোরিতে অংশগ্রহণ</div>
-                                    </div>
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold font-display section-header gradient-text-green mb-3 pb-2">প্রশিক্ষণ কেন্দ্র</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-2xl overflow-hidden gsap-stagger shadow-md hover:shadow-lg transition-shadow group" data-tilt data-tilt-max="5">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="photos/training-1.jpg" alt="National Training Center" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 font-display pt-1">জাতীয় প্রশিক্ষণ কেন্দ্র</h3>
+                        <p class="text-green-700 font-bold mb-2 text-sm bg-green-50 inline-block px-3 py-1 rounded-full pt-1.5">মৌচাক, গাজীপুর</p>
+                        <p class="text-gray-600 text-sm font-medium mt-1 pt-1">সারাদেশের স্কাউট লিডারদের উচ্চতর প্রশিক্ষণ প্রদান করা হয়।</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl overflow-hidden gsap-stagger shadow-md hover:shadow-lg transition-shadow group" data-tilt data-tilt-max="5">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="photos/training-2.jpg" alt="Regional Training Center" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 font-display pt-1">আঞ্চলিক প্রশিক্ষণ কেন্দ্র</h3>
+                        <p class="text-green-700 font-bold mb-2 text-sm bg-green-50 inline-block px-3 py-1 rounded-full pt-1.5">খুলনা, রাজশাহী, সিলেট, বরিশাল</p>
+                        <p class="text-gray-600 text-sm font-medium mt-1 pt-1">বিভাগীয় পর্যায়ে প্রশিক্ষণ কার্যক্রম পরিচালনা।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="karyokram" class="py-24 relative bg-[#eef8f5] border-t border-b border-green-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold font-display section-header gradient-text-green mb-3 pb-2">প্রধান কার্যক্রম ও ইভেন্ট</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto cursor-none">
+                <div class="bg-white rounded-2xl overflow-hidden gsap-stagger shadow-sm hover:shadow-md transition-shadow group">
+                    <img src="photos/activity-1.jpg" class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-5"><h3 class="text-lg font-bold text-gray-900 mb-2 font-display pt-1">জোটা-জোটি (JOTA)</h3><p class="text-gray-600 text-sm font-medium pt-1">ইন্টারনেটের মাধ্যমে বিশ্বের স্কাউটদের সাথে ডিজিটাল সংযোগ।</p></div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden gsap-stagger shadow-sm hover:shadow-md transition-shadow group">
+                    <img src="photos/activity-2.jpg" class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-5"><h3 class="text-lg font-bold text-gray-900 mb-2 font-display pt-1">জাতীয় রোভার মুট</h3><p class="text-gray-600 text-sm font-medium pt-1">রোভার স্কাউটদের সর্ববৃহৎ মিলনমেলা ও সমাজসেবামূলক চ্যালেঞ্জ।</p></div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden gsap-stagger shadow-sm hover:shadow-md transition-shadow group">
+                    <img src="photos/activity-3.jpg" class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-5"><h3 class="text-lg font-bold text-gray-900 mb-2 font-display pt-1">জাতীয় জাম্বোরি</h3><p class="text-gray-600 text-sm font-medium pt-1">স্কাউটদের জন্য প্রতি বছর জাতীয় স্তরে জাম্বোরি আয়োজন।</p></div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden gsap-stagger shadow-sm hover:shadow-md transition-shadow group">
+                    <img src="photos/activity-4.jpg" class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="p-5"><h3 class="text-lg font-bold text-gray-900 mb-2 font-display pt-1">দুর্যোগ ব্যবস্থাপনা</h3><p class="text-gray-600 text-sm font-medium pt-1">যেকোনো দুর্যোগকালীন সময়ে উদ্ধার ও ত্রাণ কার্যক্রম।</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sommanona" class="py-24 bg-[#002f23] text-white relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold font-display mb-3 text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-white pb-2">সর্বোচ্চ সম্মাননা অ্যাওয়ার্ড</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto text-center cursor-none">
+                <div class="bg-white/10 p-6 rounded-2xl border border-white/10 gsap-stagger shadow-lg" data-tilt data-tilt-max="10">
+                    <img src="photos/award-1.png" alt="Award 1" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-white/30 object-cover float-anim">
+                    <h3 class="text-lg font-bold mb-2 font-display text-white pt-1">শাপলা কাব অ্যাওয়ার্ড</h3>
+                    <p class="text-blue-100 text-xs font-medium pt-1">কাব স্কাউটদের জন্য সর্বোচ্চ অ্যাওয়ার্ড।</p>
+                </div>
+                <div class="bg-white/10 p-6 rounded-2xl border border-white/10 gsap-stagger shadow-lg" data-tilt data-tilt-max="10">
+                    <img src="photos/award-2.png" alt="Award 2" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-white/30 object-cover float-anim-delayed">
+                    <h3 class="text-lg font-bold mb-2 font-display text-white pt-1">প্রেসিডেন্ট'স স্কাউট</h3>
+                    <p class="text-green-100 text-xs font-medium pt-1">স্কাউট শাখার সর্বোচ্চ সম্মাননা।</p>
+                </div>
+                <div class="bg-white/10 p-6 rounded-2xl border border-white/10 gsap-stagger shadow-lg" data-tilt data-tilt-max="10">
+                    <img src="photos/award-3.png" alt="Award 3" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-white/30 object-cover float-anim">
+                    <h3 class="text-lg font-bold mb-2 font-display text-white pt-1">প্রেসিডেন্ট'স রোভার</h3>
+                    <p class="text-red-100 text-xs font-medium pt-1">রোভারদের সর্বোচ্চ স্বীকৃতি (PRS)।</p>
+                </div>
+                <div class="bg-gradient-to-b from-yellow-500/15 to-yellow-700/15 p-6 rounded-2xl border border-yellow-500/20 gsap-stagger shadow-lg" data-tilt data-tilt-max="10">
+                    <img src="photos/award-4.png" alt="Award 4" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-yellow-300/50 object-cover float-anim-delayed">
+                    <h3 class="text-lg font-bold mb-2 font-display text-yellow-300 pt-1">রৌপ্য ব্যাঘ্র ও ইলিশ</h3>
+                    <p class="text-yellow-50 text-xs font-medium pt-1">অ্যাডাল্ট লিডারদের সর্বোচ্চ সম্মাননা।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold font-display section-header gradient-text-green mb-3 pb-2">আন্তর্জাতিক অংশগ্রহণ</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
+                <div class="gsap-reveal">
+                    <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 font-display border-b border-green-100 pb-3 pt-1">বিশ্ব জাম্বোরিতে বাংলাদেশ</h3>
+                        <ul class="space-y-6 relative before:absolute before:inset-0 before:ml-4 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent">
+                            <li class="relative flex items-center gap-4 group hover:-translate-y-1 transition-transform">
+                                <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-md shrink-0 z-10">✓</div>
+                                <div class="bg-gray-50 p-3 rounded-xl shadow-sm border border-gray-100 flex-1">
+                                    <span class="font-bold text-gray-900 text-base pt-1">১৯৭৯ - নিষ্কা, কানাডা</span>
+                                    <p class="text-gray-600 text-xs mt-0.5 font-medium pt-1">প্রথম বিশ্ব জাম্বোরিতে অংশগ্রহণ</p>
                                 </div>
-                                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-xl">🇬🇧</div>
-                                    <div>
-                                        <div class="font-bold">২০০৭ - হাইড পার্ক, ইংল্যান্ড</div>
-                                        <div class="text-sm text-gray-600">স্কাউটিংয়ের শতবর্ষ উদযাপন</div>
-                                    </div>
+                            </li>
+                            <li class="relative flex items-center gap-4 group hover:-translate-y-1 transition-transform">
+                                <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-md shrink-0 z-10">✓</div>
+                                <div class="bg-gray-50 p-3 rounded-xl shadow-sm border border-gray-100 flex-1">
+                                    <span class="font-bold text-gray-900 text-base pt-1">২০০৭ - হাইড পার্ক, ইংল্যান্ড</span>
+                                    <p class="text-gray-600 text-xs mt-0.5 font-medium pt-1">স্কাউটিংের শতবর্ষ উদযাপন</p>
                                 </div>
-                                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-xl">🇺🇸</div>
-                                    <div>
-                                        <div class="font-bold">২০১৯ - মার্কিন যুক্তরাষ্ট্র</div>
-                                        <div class="text-sm text-gray-600">২৪তম বিশ্ব জাম্বোরি</div>
-                                    </div>
+                            </li>
+                            <li class="relative flex items-center gap-4 group hover:-translate-y-1 transition-transform">
+                                <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-md shrink-0 z-10">✓</div>
+                                <div class="bg-gray-50 p-3 rounded-xl shadow-sm border border-gray-100 flex-1">
+                                    <span class="font-bold text-gray-900 text-base pt-1">২০১৫ - জাপান</span>
+                                    <p class="text-gray-600 text-xs mt-0.5 font-medium pt-1">২৩তম বিশ্ব জাম্বোরি</p>
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <div class="relative">
-                            <div class="aspect-square bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl flex items-center justify-center relative overflow-hidden">
-                                <div class="absolute inset-0 opacity-20">
-                                    <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                                            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5"/>
-                                        </pattern>
-                                        <rect width="100" height="100" fill="url(#grid)" />
-                                    </svg>
-                                </div>
-                                <div class="text-center relative z-10">
-                                    <div class="text-7xl mb-4 animate-bounce">🌍</div>
-                                    <div class="text-4xl font-black text-green-700 mb-2">WOSM</div>
-                                    <div class="text-gray-600 font-medium">১৭২টি দেশের সংগঠন</div>
-                                    <div class="mt-6 flex justify-center gap-4">
-                                        <div class="bg-white px-4 py-2 rounded-lg shadow-md">
-                                            <div class="text-2xl font-bold text-green-600">৫৭M+</div>
-                                            <div class="text-xs text-gray-500">বিশ্ব সদস্য</div>
-                                        </div>
-                                        <div class="bg-white px-4 py-2 rounded-lg shadow-md">
-                                            <div class="text-2xl font-bold text-green-600">২.২M</div>
-                                            <div class="text-xs text-gray-500">বাংলাদেশ</div>
-                                        </div>
-                                    </div>
-                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="gsap-reveal" data-tilt data-tilt-max="5">
+                    <div class="bg-gradient-to-br from-[#e8f5f1] to-[#d4ede4] p-8 rounded-3xl h-full flex items-center justify-center border border-white shadow-md relative overflow-hidden">
+                        <div class="text-center relative z-10">
+                            <div class="text-6xl mb-5 animate-bounce drop-shadow-md">🌍</div>
+                            <h4 class="text-2xl font-bold text-gray-900 mb-3 font-display pt-1">WOSM এর সক্রিয় সদস্য</h4>
+                            <p class="text-gray-700 text-sm font-medium px-2 pt-1">বিশ্বের ১৭০+ দেশের সাথে বাংলাদেশ স্কাউটস একসাথে কাজ করছে যুব উন্নয়নে।</p>
+                            <div class="mt-6 flex justify-center gap-5">
+                                <div class="bg-white/90 backdrop-blur px-5 py-3 rounded-xl shadow-sm"><div class="text-2xl font-black text-green-700 mb-0.5 pt-1">১৭০+</div><div class="text-[10px] font-bold text-gray-500 uppercase tracking-widest pt-1">দেশ</div></div>
+                                <div class="bg-white/90 backdrop-blur px-5 py-3 rounded-xl shadow-sm"><div class="text-2xl font-black text-green-700 mb-0.5 pt-1">৫৭M+</div><div class="text-[10px] font-bold text-gray-500 uppercase tracking-widest pt-1">সদস্য</div></div>
                             </div>
                         </div>
                     </div>
@@ -526,61 +488,70 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-section">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-6 bg-gradient-to-br from-green-600 to-green-800 rounded relative overflow-hidden">
-                        <div class="absolute w-4 h-4 bg-red-600 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+    <section id="bhobisshot" class="py-24 relative bg-[#eef8f5] border-t border-green-100">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto text-center gsap-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold font-display section-header gradient-text-green mb-4 pb-2">ভবিষ্যৎ পরিকল্পনা</h2>
+                <p class="text-base text-gray-700 mb-10 font-medium pt-1">২০৩০ সালের মধ্যে বাংলাদেশ স্কাউটস সদস্য সংখ্যা ৫০ লাখে উন্নীত করার লক্ষ্য নিয়ে কাজ করছে।</p>
+                <div class="grid md:grid-cols-3 gap-6 cursor-none">
+                    <div class="bg-white p-8 rounded-2xl hover:-translate-y-2 transition-transform shadow-md border border-gray-100" data-tilt data-tilt-max="5">
+                        <div class="text-5xl mb-4 float-anim bg-green-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center shadow-sm">🎯</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 font-display pt-1">সদস্য বৃদ্ধি</h3>
+                        <p class="text-gray-700 text-sm font-medium leading-relaxed pt-1">সকল শিক্ষাপ্রতিষ্ঠানে স্কাউটিং কার্যক্রম বাধ্যতামূলক করা ও সম্প্রসারণ।</p>
                     </div>
-                    <span class="text-xl font-bold font-display">বাংলাদেশ স্কাউটস</span>
-                </div>
-                <p class="text-gray-400 text-sm leading-relaxed mb-4">বাংলাদেশের বৃহত্তম যুব সংগঠন। ১৯৭২ সাল থেকে সুন্দর সমাজ গঠনে ও মানবসেবায় নিয়োজিত।</p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
-                    </a>
-                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="footer-section">
-                <h4>গুরুত্বপূর্ণ লিংক</h4>
-                <a href="http://scouts.gov.bd/" target="_blank">অফিসিয়াল ওয়েবসাইট</a>
-                <a href="#">WOSM</a>
-                <a href="#">জাতীয় জাম্বোরি</a>
-                <a href="#">জোটা-জোটি</a>
-                <a href="#">অনলাইন স্কাউট ডাটাবেজ</a>
-            </div>
-            
-            <div class="footer-section">
-                <h4>যোগাযোগ</h4>
-                <p class="text-gray-400 text-sm mb-2">📍 জাতীয় স্কাউট ভবন, কাকরাইল, ঢাকা-১০০০</p>
-                <p class="text-gray-400 text-sm mb-2">📞 +৮৮০ ২ ৯৩৩ ৩৬৫১</p>
-                <p class="text-gray-400 text-sm mb-2">✉️ info@scouts.gov.bd</p>
-            </div>
-            
-            <div class="footer-section">
-                <h4>নিউজলেটার</h4>
-                <p class="text-gray-400 text-sm mb-4">সর্বশেষ খবর পেতে সাবস্ক্রাইব করুন</p>
-                <div class="flex">
-                    <input type="email" placeholder="আপনার ইমেইল" class="flex-1 px-4 py-2 bg-white/10 border border-white/20 rounded-l-lg text-white placeholder-gray-500 focus:outline-none focus:border-green-500">
-                    <button class="px-4 py-2 bg-green-600 rounded-r-lg hover:bg-green-700 transition-colors">যুক্ত হোন</button>
+                    <div class="bg-white p-8 rounded-2xl hover:-translate-y-2 transition-transform shadow-md border border-gray-100" data-tilt data-tilt-max="5">
+                        <div class="text-5xl mb-4 float-anim-delayed bg-green-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center shadow-sm">💻</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 font-display pt-1">ডিজিটালাইজেশন</h3>
+                        <p class="text-gray-700 text-sm font-medium leading-relaxed pt-1">অনলাইন প্রশিক্ষণ, ডাটাবেজ তৈরি ও ডিজিটাল ব্যাজিং সিস্টেম চালু।</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl hover:-translate-y-2 transition-transform shadow-md border border-gray-100" data-tilt data-tilt-max="5">
+                        <div class="text-5xl mb-4 float-anim bg-green-50 w-20 h-20 mx-auto rounded-full flex items-center justify-center shadow-sm">🌱</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 font-display pt-1">সবুজ বাংলাদেশ</h3>
+                        <p class="text-gray-700 text-sm font-medium leading-relaxed pt-1">২০৩০ সালের মধ্যে ১০ কোটি গাছ রোপণের লক্ষ্যমাত্রা অর্জন।</p>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="border-t border-white/10 mt-12 pt-8 text-center">
-            <p class="text-gray-500 text-sm">© ২০২৬ বাংলাদেশ স্কাউটস | সর্বস্বত্ব সংরক্ষিত</p>
+    </section>
+
+    <footer class="pt-10 pb-6 bg-[#001f16] text-white border-t-4 border-red-600">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-6 mb-6 max-w-5xl mx-auto">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                        <img src="photos/scout-logo.png" class="w-6 h-6">
+                        <span class="text-lg font-bold font-display text-white pt-1">বাংলাদেশ স্কাউটস</span>
+                    </div>
+                    <p class="text-green-200 text-xs font-medium pt-1">বাংলাদেশের বৃহত্তম যুব সংগঠন।</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-6 text-green-200 text-xs font-medium">
+                    <a href="#" class="hover:text-white pt-1">WOSM</a>
+                    <a href="#" class="hover:text-white pt-1">জাতীয় জাম্বোরি</a>
+                    <a href="#" class="hover:text-white pt-1">জোটা-জোটি</a>
+                </div>
+
+                <div class="text-center md:text-right text-green-200 text-xs font-medium space-y-1">
+                    <p class="pt-1">📍 জাতীয় স্কাউট ভবন, কাকরাইল, ঢাকা</p>
+                    <p class="pt-1">📞 +880 2 933 3651</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-green-800/50 pt-4 text-center">
+                <p class="text-green-400 text-[11px] font-medium pt-1">© ২০২৬ বাংলাদেশ স্কাউটস | ডেভেলপমেন্ট ও ডিজাইনে গর্বিত স্কাউট</p>
+            </div>
         </div>
     </footer>
 
-    <div class="back-to-top" id="backToTop">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
-    </div>
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-gradient-to-r from-green-600 to-green-800 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-300 transform hover:scale-110 hover:-translate-y-1">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"></path></svg>
+    </button>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
     <script src="script.js"></script>
 </body>
 </html>
