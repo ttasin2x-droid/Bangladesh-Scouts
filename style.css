@@ -80,6 +80,39 @@ body {
 
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
+/* Typewriter Animation Cursor */
+.typewriter-cursor {
+    animation: blink-cursor 0.75s step-end infinite;
+}
+@keyframes blink-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--bangladesh-green); }
+}
+
+/* Shining Badge Animation (Added) */
+.shining-badge { position: relative; overflow: hidden; }
+.shining-badge::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg); animation: badge-shine 4s infinite cubic-bezier(0.4, 0, 0.2, 1); z-index: 10;
+}
+@keyframes badge-shine { 
+    0% { left: -100%; } 
+    20% { left: 200%; } 
+    100% { left: 200%; } 
+}
+
+/* Infinite Marquee Scroll (Added) */
+.marquee-content {
+    animation: scroll-marquee 25s linear infinite;
+    display: inline-flex;
+}
+.marquee-content:hover { animation-play-state: paused; }
+@keyframes scroll-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
 /* Floating Animations */
 .float-anim { animation: float 4s ease-in-out infinite; }
 .float-anim-delayed { animation: float 5s ease-in-out 2s infinite; }
@@ -90,7 +123,7 @@ body {
     100% { transform: translateY(0px); }
 }
 
-/* Stats Counter (Restored Green Gradient and Shiny Effect) */
+/* Stats Counter (Green Gradient and Shiny Effect) */
 .stat-box { 
     background: linear-gradient(135deg, var(--bangladesh-dark-green), var(--bangladesh-light-green), var(--bangladesh-green), var(--bangladesh-dark-green)); 
     background-size: 300% 300%;
