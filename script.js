@@ -81,10 +81,10 @@ gsap.utils.toArray('.timeline-node-green').forEach((node) => {
 gsap.utils.toArray('.timeline-content-left').forEach((card) => { gsap.fromTo(card, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out", scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" } }); });
 gsap.utils.toArray('.timeline-content-right').forEach((card) => { gsap.fromTo(card, { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out", scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" } }); });
 
-// Stagger Sections
-const sectionsToStagger = ['.ios-widget', '#mulniti', '#shakha', '#poricalona', '#proshikkhon', '#karyokram', '#sommanona'];
+// Stagger Sections (Updated to match all sections)
+const sectionsToStagger = ['.ios-widget', '#mulniti', '#shakha', '#poricalona', '#proshikkhon', '#karyokram', '#sommanona', '#bhobisshot'];
 sectionsToStagger.forEach(sec => {
-    gsap.fromTo(`${sec} .gsap-stagger`, 
+    gsap.fromTo(`${sec}.gsap-stagger, ${sec} .gsap-stagger`, 
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.1)", scrollTrigger: { trigger: sec, start: "top 80%", toggleActions: "play none none reverse" } }
     );
