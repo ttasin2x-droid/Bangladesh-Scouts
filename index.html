@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>বাংলাদেশ স্কাউটস - ইতিহাস ও ঐতিহ্য</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,9 +15,7 @@
     <div class="cursor-outline"></div>
 
     <div id="preloader">
-        <div class="scout-loader">
-            <img src="photos/scout-logo.png" alt="Logo" class="w-12 h-12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse">
-        </div>
+        <div class="scout-loader"><div class="loader-logo">⚜️</div></div>
         <h2 class="text-2xl font-display text-white font-bold tracking-wider mt-3">বাংলাদেশ স্কাউটস</h2>
         <p class="text-green-400 mt-2 text-xs font-medium tracking-widest uppercase animate-pulse">ইতিহাস ও ঐতিহ্য প্রস্তুত হচ্ছে...</p>
     </div>
@@ -25,9 +24,11 @@
 
     <nav class="fixed w-full z-50 nav-green py-3 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-6">
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center relative z-50">
                 <div class="flex items-center gap-2 cursor-pointer float-anim" onclick="window.scrollTo(0,0)">
-                    <img src="photos/scout-logo.png" alt="Logo" class="w-9 h-9 drop-shadow-md">
+                    <div class="w-8 h-5 bg-green-700 rounded relative overflow-hidden shadow-md border border-white/50">
+                        <div class="absolute w-3 h-3 bg-red-600 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-inner"></div>
+                    </div>
                     <span class="text-xl font-bold gradient-text-green font-display drop-shadow-sm">বাংলাদেশ স্কাউটস</span>
                 </div>
                 <div class="hidden lg:flex space-x-6 text-sm font-bold">
@@ -38,13 +39,13 @@
                     <a href="#karyokram" class="nav-link text-gray-800 hover:text-green-700 transition-colors">কার্যক্রম</a>
                     <a href="#sommanona" class="nav-link text-gray-800 hover:text-green-700 transition-colors">সম্মাননা</a>
                 </div>
-                <button id="mobileMenuBtn" class="lg:hidden text-green-700 focus:outline-none bg-green-50 p-2 rounded-lg">
+                <button id="mobileMenuBtn" class="lg:hidden text-green-700 focus:outline-none bg-green-50 p-2 rounded-lg relative z-50">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
             
-            <div id="mobileMenu" class="lg:hidden flex flex-col mt-3 space-y-2 text-center text-sm font-bold border-t border-green-100 bg-white/95 backdrop-blur-lg rounded-b-xl shadow-lg absolute left-0 right-0 px-6 pb-4">
-                <a href="#itihas" class="block pt-3 text-gray-800 hover:text-green-700 mobile-link">ইতিহাস</a>
+            <div id="mobileMenu" class="mobile-menu-container lg:hidden flex flex-col space-y-3 text-center text-sm font-bold border-t border-green-100 absolute left-0 right-0 bg-white/95 backdrop-blur-lg rounded-b-xl shadow-lg">
+                <a href="#itihas" class="block pt-2 text-gray-800 hover:text-green-700 mobile-link">ইতিহাস</a>
                 <a href="#mulniti" class="block text-gray-800 hover:text-green-700 mobile-link">মূলনীতি ও আইন</a>
                 <a href="#shakha" class="block text-gray-800 hover:text-green-700 mobile-link">শাখাসমূহ</a>
                 <a href="#poricalona" class="block text-gray-800 hover:text-green-700 mobile-link">সংগঠনিক কাঠামো</a>
@@ -73,13 +74,29 @@
 
             <p class="text-lg md:text-xl text-gray-800 mb-8 max-w-2xl mx-auto font-display leading-relaxed gsap-reveal hero-element bg-white/50 p-3 rounded-xl backdrop-blur-sm border border-white/50 shadow-sm">স্বাধীনতার পর থেকে আজ পর্যন্ত—বাংলাদেশের বৃহত্তম যুব সংগঠনের গৌরবময় ইতিহাস ও ঐতিহ্যের পদযাত্রা</p>
             
-            <div class="flex flex-wrap justify-center gap-3 mb-10 gsap-reveal hero-element">
-                <span class="badge-green"><span class="mr-1.5 text-lg">🏛️</span> প্রতিষ্ঠিত: ১৯৭২</span>
-                <span class="badge-green"><span class="mr-1.5 text-lg">🌍</span> WOSM সদস্য: ১৯৭৪</span>
-                <span class="badge-green"><span class="mr-1.5 text-lg">🏆</span> বিশ্বে ৫ম বৃহৎ</span>
-                <span class="badge-green"><span class="mr-1.5 text-lg">👥</span> সদস্য: ১৫+ লাখ</span>
-                <span class="badge-green"><span class="mr-1.5 text-lg">👑</span> প্রধান স্কাউট: মহামান্য রাষ্ট্রপতি</span>
+            <div class="flex flex-wrap justify-center gap-4 mb-10 gsap-reveal hero-element cursor-none z-20 relative" onclick="window.open('https://www.scouts.gov.bd/', '_blank')">
+                <div class="hero-badge group" onclick="event.stopPropagation()">
+                    <div class="badge-icon text-green-600">🏛️</div>
+                    <div class="badge-text"><span class="block text-[10px] text-gray-500 uppercase tracking-widest">প্রতিষ্ঠিত</span><strong class="block text-gray-900 font-bold text-sm">১৯৭২</strong></div>
+                </div>
+                <div class="hero-badge group" onclick="event.stopPropagation()">
+                    <div class="badge-icon text-blue-600">🌍</div>
+                    <div class="badge-text"><span class="block text-[10px] text-gray-500 uppercase tracking-widest">WOSM সদস্য</span><strong class="block text-gray-900 font-bold text-sm">১৯৭৪</strong></div>
+                </div>
+                <div class="hero-badge group" onclick="event.stopPropagation()">
+                    <div class="badge-icon text-yellow-600">🏆</div>
+                    <div class="badge-text"><span class="block text-[10px] text-gray-500 uppercase tracking-widest">বিশ্বে</span><strong class="block text-gray-900 font-bold text-sm">৫ম বৃহৎ</strong></div>
+                </div>
+                <div class="hero-badge group" onclick="event.stopPropagation()">
+                    <div class="badge-icon text-indigo-600">👥</div>
+                    <div class="badge-text"><span class="block text-[10px] text-gray-500 uppercase tracking-widest">সদস্য</span><strong class="block text-gray-900 font-bold text-sm">১৫+ লাখ</strong></div>
+                </div>
+                <div class="hero-badge group" onclick="event.stopPropagation()">
+                    <div class="badge-icon text-red-600">👑</div>
+                    <div class="badge-text"><span class="block text-[10px] text-gray-500 uppercase tracking-widest">প্রধান স্কাউট</span><strong class="block text-gray-900 font-bold text-sm leading-tight mt-0.5">মহামান্য রাষ্ট্রপতি</strong></div>
+                </div>
             </div>
+
             <div class="gsap-reveal hero-element">
                 <a href="#itihas" class="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-800 text-white px-8 py-3.5 rounded-full font-bold text-base shadow-lg hover:shadow-xl transform hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group cursor-none" onclick="event.stopPropagation()">
                     <span class="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-[shimmer_1s_forwards]"></span>
@@ -213,8 +230,8 @@
         </div>
     </section>
 
-    <section id="mulniti" class="py-24 bg-[#eef8f5] relative border-t border-b border-green-100">
-        <div class="container mx-auto px-6 cursor-pointer" onclick="window.open('https://www.scouts.gov.bd/', '_blank')">
+    <section id="mulniti" class="py-24 bg-[#eef8f5] relative border-t border-b border-green-100 cursor-pointer" onclick="window.open('https://www.scouts.gov.bd/', '_blank')">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16 gsap-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold font-display section-header gradient-text-green mb-3">মূলনীতি ও আইন</h2>
                 <p class="text-gray-600 text-base mt-3 font-medium">একজন স্কাউটের চলার পথের চিরন্তন পাথেয়</p>
@@ -256,8 +273,8 @@
         </div>
     </section>
 
-    <section id="shakha" class="py-24 bg-white relative">
-        <div class="container mx-auto px-6 cursor-pointer" onclick="window.open('https://www.scouts.gov.bd/', '_blank')">
+    <section id="shakha" class="py-24 bg-white relative cursor-pointer" onclick="window.open('https://www.scouts.gov.bd/', '_blank')">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16 gsap-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold font-display section-header gradient-text-green mb-3">স্কাউট শাখাসমূহ</h2>
                 <p class="text-gray-600 text-base mt-3 font-medium">বয়সভিত্তিক চারটি মূল স্তরে বিভক্ত কার্যক্রম</p>
@@ -440,8 +457,8 @@
         </div>
     </section>
 
-    <section id="karyokram" class="py-24 relative bg-[#eef8f5] border-t border-b border-green-100 cursor-pointer" onclick="window.open('https://www.scouts.gov.bd/', '_blank')">
-        <div class="container mx-auto px-6">
+    <section id="karyokram" class="py-24 relative bg-[#eef8f5] border-t border-b border-green-100">
+        <div class="container mx-auto px-6 cursor-pointer" onclick="window.open('https://www.scouts.gov.bd/', '_blank')">
             <div class="text-center mb-16 gsap-reveal">
                 <h2 class="text-3xl md:text-4xl font-bold font-display section-header gradient-text-green mb-3">প্রধান কার্যক্রম ও ইভেন্ট</h2>
                 <p class="text-gray-600 text-base mt-3 font-medium">বছরজুড়ে দেশ ও আন্তর্জাতিক পর্যায়ের নানা আয়োজন</p>
@@ -512,8 +529,8 @@
             <div class="text-center mb-10 gsap-reveal">
                 <h3 class="text-2xl md:text-3xl font-bold font-display gradient-text-green mb-2">বিশেষ বৈশ্বিক উদ্যোগ</h3>
             </div>
-            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div class="activity-card gsap-stagger group border border-blue-100">
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto cursor-none">
+                <div class="activity-card gsap-stagger group border border-blue-100 cursor-pointer" onclick="event.stopPropagation(); window.open('https://www.scout.org/messengersofpeace', '_blank')">
                     <div class="h-48 overflow-hidden relative">
                         <img src="photos/mop.jpg" alt="Messengers of Peace" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
@@ -524,7 +541,7 @@
                         <p class="text-gray-700 text-sm font-medium leading-relaxed px-4">বিশ্বব্যাপী শান্তি, সম্প্রীতি ও ভ্রাতৃত্ববোধ রক্ষায় এবং সমাজে ইতিবাচক পরিবর্তন আনতে স্কাউটদের বিশেষ উদ্যোগ।</p>
                     </div>
                 </div>
-                <div class="activity-card gsap-stagger group border border-green-100">
+                <div class="activity-card gsap-stagger group border border-green-100 cursor-pointer" onclick="event.stopPropagation(); window.open('https://sdgs.scout.org/', '_blank')">
                     <div class="h-48 overflow-hidden relative">
                         <img src="photos/ttl.jpg" alt="Ticket To Life" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
@@ -685,7 +702,7 @@
     </div>
 
     <footer class="bg-[#111827] text-gray-300 py-6 border-t-[3px] border-green-700 overflow-hidden cursor-pointer" onclick="window.open('https://www.scouts.gov.bd/', '_blank')">
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4 max-w-5xl mx-auto">
                 <div class="flex items-center gap-3 group">
                     <img src="photos/scout-logo.png" alt="Logo" class="w-8 h-8 opacity-90 drop-shadow-md group-hover:scale-110 transition-transform">
@@ -693,7 +710,7 @@
                 </div>
                 
                 <div class="text-center md:text-right">
-                    <p class="text-xs text-gray-400 font-medium tracking-wider">© ২০২৬ বাংলাদেশ স্কাউটস | ডিজাইন: শিপু</p>
+                    <p class="text-xs text-gray-400 font-medium tracking-wider">© ২০২৬ বাংলাদেশ স্কাউটস | ডেভেলপমেন্ট ও ডিজাইনে গর্বিত স্কাউট</p>
                 </div>
             </div>
         </div>
