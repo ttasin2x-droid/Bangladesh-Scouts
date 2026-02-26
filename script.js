@@ -1,10 +1,16 @@
-// --- DATA RENDERING LOGIC ---
-document.addEventListener("DOMContentLoaded", () => {
+// --- DATA RENDERING LOGIC (Directly Executed) ---
+function renderWebsiteData() {
+    // Check if data.js is loaded
+    if(typeof scoutData === 'undefined') {
+        console.error("Error: data.js file load hoyni! Make sure data.js file is in the same folder.");
+        return;
+    }
+
     // Render History
     const historyContainer = document.getElementById("history-container");
-    if(historyContainer && typeof scoutData !== 'undefined') {
+    if(historyContainer) {
         let historyHTML = `<div class="timeline-line-bg"></div><div class="timeline-line-fill" id="animatedTimelineLine"></div>`;
-        scoutData.history.forEach((item, index) => {
+        scoutData.history.forEach((item) => {
             let alignClass = item.align === "right" ? "timeline-content-right" : "timeline-content-left md:text-right";
             let nodeClass = item.isRed ? "node-red" : (item.isYellow ? "node-yellow" : "");
             let nodeStyle = item.isRed ? "background: var(--bangladesh-red); border-color: white; box-shadow: 0 0 15px rgba(244, 42, 65, 0.6);" : (item.isYellow ? "background: #eab308; border-color: white; box-shadow: 0 0 15px rgba(234, 179, 8, 0.6);" : "");
@@ -29,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render Branches
     const branchesContainer = document.getElementById("branches-container");
-    if(branchesContainer && typeof scoutData !== 'undefined') {
+    if(branchesContainer) {
         let branchesHTML = "";
         scoutData.branches.forEach(item => {
             branchesHTML += `
@@ -47,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render Specialized
     const specializedContainer = document.getElementById("specialized-container");
-    if(specializedContainer && typeof scoutData !== 'undefined') {
+    if(specializedContainer) {
         let specHTML = "";
         scoutData.specialized.forEach(item => {
             specHTML += `
@@ -64,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render Org Summary
     const orgContainer = document.getElementById("org-summary-container");
-    if(orgContainer && typeof scoutData !== 'undefined') {
+    if(orgContainer) {
         let orgHTML = "";
         scoutData.orgSummary.forEach(item => {
             orgHTML += `
@@ -83,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render Training Centers
     const trainingContainer = document.getElementById("training-container");
-    if(trainingContainer && typeof scoutData !== 'undefined') {
+    if(trainingContainer) {
         let trainHTML = "";
         scoutData.training.forEach(item => {
             trainHTML += `
@@ -104,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render Activities
     const actContainer = document.getElementById("activities-container");
-    if(actContainer && typeof scoutData !== 'undefined') {
+    if(actContainer) {
         let actHTML = "";
         scoutData.activities.forEach(item => {
             actHTML += `
@@ -125,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render Global Initiatives
     const globalContainer = document.getElementById("global-container");
-    if(globalContainer && typeof scoutData !== 'undefined') {
+    if(globalContainer) {
         globalContainer.innerHTML = `
         <div class="activity-card gsap-stagger group border border-blue-100 cursor-pointer" onclick="window.open('https://www.scout.org/messengers-of-peace', '_blank')">
             <div class="h-48 overflow-hidden relative">
@@ -153,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render Awards
     const awardsContainer = document.getElementById("awards-container");
-    if(awardsContainer && typeof scoutData !== 'undefined') {
+    if(awardsContainer) {
         let awardHTML = "";
         scoutData.awards.forEach(item => {
             awardHTML += `
@@ -170,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render International
     const intContainer = document.getElementById("international-container");
-    if(intContainer && typeof scoutData !== 'undefined') {
+    if(intContainer) {
         let intHTML = "";
         scoutData.international.forEach(item => {
             intHTML += `
@@ -187,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render Future
     const futureContainer = document.getElementById("future-container");
-    if(futureContainer && typeof scoutData !== 'undefined') {
+    if(futureContainer) {
         let futHTML = "";
         scoutData.future.forEach(item => {
             futHTML += `
@@ -200,10 +206,13 @@ document.addEventListener("DOMContentLoaded", () => {
         futureContainer.innerHTML = futHTML;
     }
 
-    // INITIALIZE ANIMATIONS AFTER RENDERING
+    // Initiate Scripts after Rendering HTML
     initCustomCursor();
     initGSAP();
-});
+}
+
+// EXECUTE IMMEDIATELY
+renderWebsiteData();
 
 // --- CORE SCRIPTS ---
 
@@ -264,15 +273,19 @@ window.addEventListener('load', () => {
             preloader.style.display = 'none'; 
             triggerConfetti(); 
             initTypewriter(); 
-            gsap.fromTo(".hero-element", 
-                { y: 30, opacity: 0 }, 
-                { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power2.out" }
-            );
+            
+            if(typeof gsap !== 'undefined'){
+                gsap.fromTo(".hero-element", 
+                    { y: 30, opacity: 0 }, 
+                    { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power2.out" }
+                );
+            }
         }, 600);
     }, 1000); 
 });
 
 function triggerConfetti() {
+    if(typeof confetti === 'undefined') return;
     var duration = 3 * 1000;
     var animationEnd = Date.now() + duration;
     var defaults = { startVelocity: 25, spread: 360, ticks: 60, zIndex: 0 };
@@ -288,7 +301,11 @@ function triggerConfetti() {
 
 // GSAP Animations
 function initGSAP() {
-    if(typeof gsap === 'undefined') return;
+    if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        // Retry logic if GSAP loads slightly slower
+        setTimeout(initGSAP, 200);
+        return;
+    }
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.to("#animatedTimelineLine", { height: "100%", ease: "none", scrollTrigger: { trigger: ".timeline-container", start: "top center", end: "bottom center", scrub: 1 } });
@@ -317,9 +334,9 @@ function initGSAP() {
 
 // Horizontal Chart Scroll Animation
 const scrollArea = document.getElementById('scrollArea');
-const animElements = document.querySelectorAll('.anim-el');
 function checkHorizontalScroll() {
-    if(!scrollArea) return;
+    const animElements = document.querySelectorAll('.anim-el');
+    if(!scrollArea || animElements.length === 0) return;
     const areaRect = scrollArea.getBoundingClientRect();
     const triggerPoint = areaRect.left + (areaRect.width * 0.85);
     animElements.forEach(el => {
@@ -337,24 +354,33 @@ if(scrollArea){
 // Mobile Menu Fix
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
-mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-document.querySelectorAll('.mobile-link').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.remove('open')); });
+if(mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    document.querySelectorAll('.mobile-link').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.remove('open')); });
+}
 
 // Scroll Events
 window.addEventListener('scroll', () => {
     const winScroll = document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    document.getElementById('progressBar').style.width = ((winScroll / height) * 100) + '%';
+    const progress = document.getElementById('progressBar');
+    if(progress) progress.style.width = ((winScroll / height) * 100) + '%';
     
     const backToTop = document.getElementById('backToTop');
-    if (winScroll > 400) backToTop.classList.remove('opacity-0', 'pointer-events-none');
-    else backToTop.classList.add('opacity-0', 'pointer-events-none');
+    if(backToTop) {
+        if (winScroll > 400) backToTop.classList.remove('opacity-0', 'pointer-events-none');
+        else backToTop.classList.add('opacity-0', 'pointer-events-none');
+    }
     
     const navbar = document.getElementById('navbar');
-    if (winScroll > 30) { navbar.classList.add('shadow-md', 'bg-white/95'); }
-    else { navbar.classList.remove('shadow-md', 'bg-white/95'); }
+    if(navbar) {
+        if (winScroll > 30) { navbar.classList.add('shadow-md', 'bg-white/95'); }
+        else { navbar.classList.remove('shadow-md', 'bg-white/95'); }
+    }
 });
-document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+const backToTopBtn = document.getElementById('backToTop');
+if(backToTopBtn) backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 // Number Counters
 const counters = document.querySelectorAll('.counter');
