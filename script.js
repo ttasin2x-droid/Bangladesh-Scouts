@@ -15,7 +15,7 @@ window.addEventListener('mousemove', (e) => {
     }, { duration: 300, fill: "forwards" });
 });
 
-document.querySelectorAll('a, button, .cursor-none').forEach(el => {
+document.querySelectorAll('a, button, .cursor-pointer, .hero-badge').forEach(el => {
     el.addEventListener('mouseenter', () => {
         cursorOutline.style.width = '50px';
         cursorOutline.style.height = '50px';
@@ -28,7 +28,7 @@ document.querySelectorAll('a, button, .cursor-none').forEach(el => {
     });
 });
 
-// Typewriter Function (Added)
+// Typewriter Function 
 function initTypewriter() {
     const text = "সেবাই আমাদের ব্রত, আত্মোৎসর্গ আমাদের দীক্ষা";
     const element = document.getElementById("typewriter-text");
@@ -54,7 +54,7 @@ window.addEventListener('load', () => {
         setTimeout(() => { 
             preloader.style.display = 'none'; 
             triggerConfetti(); 
-            initTypewriter(); // Call Typewriter when preloader finishes
+            initTypewriter(); 
             
             gsap.fromTo(".hero-element", 
                 { y: 30, opacity: 0 }, 
@@ -120,13 +120,13 @@ gsap.utils.toArray('.parallax-bg').forEach(bg => {
     gsap.to(bg, { y: () => (ScrollTrigger.maxScroll(window) * speed), ease: "none", scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: true }});
 });
 
-// Mobile Menu
+// Mobile Menu Fix
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
 document.querySelectorAll('.mobile-link').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.remove('open')); });
 
-// Scroll Events (Progress Bar, Nav Shadow, Back to Top)
+// Scroll Events
 window.addEventListener('scroll', () => {
     const winScroll = document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
