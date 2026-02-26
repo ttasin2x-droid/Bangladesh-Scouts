@@ -52,11 +52,23 @@ body {
 
 /* Custom Cursor */
 .cursor-dot, .cursor-outline {
-    position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
-    border-radius: 50%; z-index: 9999999; pointer-events: none;
+    position: fixed; 
+    top: 0; left: 0; 
+    transform: translate(-50%, -50%);
+    border-radius: 50%; 
+    z-index: 9999999; 
+    pointer-events: none;
 }
-.cursor-dot { width: 8px; height: 8px; background-color: var(--bangladesh-red); transition: transform 0.1s; }
-.cursor-outline { width: 40px; height: 40px; border: 2px solid rgba(0, 106, 78, 0.5); transition: width 0.2s, height 0.2s, background-color 0.2s; }
+.cursor-dot { 
+    width: 8px; height: 8px; 
+    background-color: var(--bangladesh-red); 
+    transition: transform 0.1s; 
+}
+.cursor-outline { 
+    width: 40px; height: 40px; 
+    border: 2px solid rgba(0, 106, 78, 0.5); 
+    transition: width 0.2s, height 0.2s, background-color 0.2s; 
+}
 
 /* Subtle Noise Overlay */
 .noise-overlay {
@@ -222,7 +234,7 @@ footer { position: relative; overflow: hidden; }
 /* ========================================================
    HORIZONTAL CHART CSS
    ======================================================== */
-.landscape-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding: 40px 20px; padding-bottom: 120px; scroll-behavior: smooth; background: transparent; }
+.landscape-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding: 40px 20px; padding-bottom: 250px; scroll-behavior: smooth; background: transparent; }
 .chart-flex-row { display: flex; align-items: center; width: max-content; padding: 0 20px; }
 .chart-node { background: #fdfdfd; color: #a4b0be; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 15px; font-family: 'Noto Serif Bengali', serif; box-shadow: 0 2px 5px rgba(0,0,0,0.04); border-left: 5px solid #dfe4ea; white-space: nowrap; transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: center; transform: scale(0.95); position: relative; overflow: hidden; flex-shrink: 0; }
 .chart-node::after { content: ""; position: absolute; top: 0; left: -150%; width: 60%; height: 100%; background: linear-gradient(to right, rgba(0, 106, 78, 0) 0%, rgba(0, 106, 78, 0.3) 50%, rgba(0, 106, 78, 0) 100%); transform: skewX(-25deg); z-index: 1; pointer-events: none; }
