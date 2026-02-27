@@ -1,22 +1,6 @@
-/* SPEED OPTIMIZATION: Font Swap */
-@font-face {
-    font-family: 'Hind Siliguri';
-    src: url('fonts/HindSiliguri-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Hind Siliguri';
-    src: url('fonts/HindSiliguri-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Noto Serif Bengali';
-    src: url('fonts/NotoSerifBengali-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-display: swap;
-}
+/* লোকাল ফন্টের কারণে GitHub Pages-এ কনফ্লিক্ট হচ্ছিল। 
+  তাই @font-face মুছে দেওয়া হয়েছে। এখন HTML এর গুগল ফন্ট লিংক সরাসরি কাজ করবে! 
+*/
 
 * { 
     margin: 0; 
@@ -34,7 +18,6 @@
     --off-white: #F8FAFC;
 }
 
-/* FIX: Tailwind এর ফন্ট ওভাররাইড করতে html এবং !important অ্যাড করা হয়েছে */
 html, body {
     font-family: 'Hind Siliguri', sans-serif !important;
     background: linear-gradient(135deg, var(--off-white) 0%, #e8f5f1 100%);
@@ -43,7 +26,7 @@ html, body {
     scroll-behavior: smooth;
 }
 
-/* FIX: হেডিং ফন্টেও !important অ্যাড করা হয়েছে */
+/* Heading Font */
 .font-display { 
     font-family: 'Noto Serif Bengali', serif !important; 
     line-height: 1.4;
@@ -84,7 +67,7 @@ html, body {
 ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--bangladesh-light-green), var(--bangladesh-dark-green)); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--bangladesh-dark-green); }
 
-/* Preloader Updated with Image */
+/* Preloader */
 #preloader {
     position: fixed; inset: 0; background: #001f16;
     z-index: 999999; display: flex; justify-content: center;
@@ -101,9 +84,7 @@ html, body {
 
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-/* ========================================================
-   Redesigned Hero Badges (Bigger & Beautiful)
-   ======================================================== */
+/* Hero Badges */
 .hero-badge {
     display: flex; align-items: center; gap: 14px;
     background: rgba(255, 255, 255, 0.9); 
@@ -139,11 +120,11 @@ html, body {
     .badge-text .value { font-size: 15px; }
 }
 
-/* Typewriter Animation Cursor */
+/* Typewriter Cursor */
 .typewriter-cursor { animation: blink-cursor 0.75s step-end infinite; }
 @keyframes blink-cursor { from, to { border-color: transparent; } 50% { border-color: var(--bangladesh-green); } }
 
-/* Shining Badge Animation */
+/* Shining Badge */
 .shining-badge { position: relative; overflow: hidden; }
 .shining-badge::before {
     content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
@@ -152,7 +133,7 @@ html, body {
 }
 @keyframes badge-shine { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
 
-/* Infinite Marquee Scroll */
+/* Infinite Marquee */
 .marquee-content { animation: scroll-marquee 25s linear infinite; display: inline-flex; }
 .marquee-content:hover { animation-play-state: paused; }
 @keyframes scroll-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -163,9 +144,7 @@ html, body {
 .float-slow { animation: float 8s ease-in-out infinite; }
 @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
 
-/* ========================================================
-   Stats Counter
-   ======================================================== */
+/* Stats Counter */
 .stat-box { 
     background: linear-gradient(135deg, var(--bangladesh-dark-green), var(--bangladesh-light-green), var(--bangladesh-green), var(--bangladesh-dark-green)); 
     background-size: 300% 300%;
@@ -183,7 +162,7 @@ html, body {
 @keyframes float-stat { 0% { transform: scale(0.98) translateY(0); } 100% { transform: scale(1.02) translateY(-3px); } }
 .stat-box::before { content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%; background: linear-gradient(rgba(255,255,255,0.2), transparent); border-radius: 50%; transform: rotate(45deg); pointer-events: none; }
 
-/* Glass Card Upgrades */
+/* Glass Cards */
 .glass-card-green {
     background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.6); 
