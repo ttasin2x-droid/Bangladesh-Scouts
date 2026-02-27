@@ -135,8 +135,8 @@ setTimeout(() => {
         gsap.utils.toArray('.timeline-content-left').forEach((card) => { gsap.fromTo(card, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out", scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" } }); });
         gsap.utils.toArray('.timeline-content-right').forEach((card) => { gsap.fromTo(card, { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out", scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" } }); });
 
-        // Stagger Sections
-        const sectionsToStagger = ['.stat-box', '#mulniti', '#shakha', '#poricalona', '#regions', '#proshikkhon', '#karyokram', '#sommanona', '#bhobisshot'];
+        // Stagger Sections (Added #netritto and #jamboree)
+        const sectionsToStagger = ['.stat-box', '#mulniti', '#shakha', '#poricalona', '#regions', '#proshikkhon', '#karyokram', '#sommanona', '#bhobisshot', '#netritto', '#jamboree'];
         sectionsToStagger.forEach(sec => {
             gsap.fromTo(`${sec} .gsap-stagger`, 
                 { y: 30, opacity: 0 },
