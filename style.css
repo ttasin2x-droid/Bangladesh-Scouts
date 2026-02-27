@@ -104,32 +104,39 @@ body {
    Redesigned Hero Badges (Bigger & Beautiful)
    ======================================================== */
 .hero-badge {
-    display: flex; align-items: center; gap: 12px;
-    background: rgba(255, 255, 255, 0.85); 
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(255, 255, 255, 0.9); 
     backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-    padding: 8px 24px 8px 8px; 
+    padding: 10px 28px 10px 10px; 
     border-radius: 50px;
     border: 1.5px solid rgba(255, 255, 255, 1);
-    box-shadow: 0 8px 20px rgba(0, 106, 78, 0.08);
+    box-shadow: 0 8px 25px rgba(0, 106, 78, 0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-badge:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 12px 25px rgba(0, 106, 78, 0.15);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 106, 78, 0.2);
     background: rgba(255, 255, 255, 1);
     border-color: var(--bangladesh-green);
 }
 .badge-icon {
-    width: 44px; height: 44px; border-radius: 50%;
+    width: 50px; height: 50px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; background: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    font-size: 1.75rem; background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-badge:hover .badge-icon { transform: rotate(15deg) scale(1.15); }
 .badge-text { text-align: left; line-height: 1.2; }
-.badge-text .title { display: block; font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
-.badge-text .value { display: block; font-size: 16px; color: #1e293b; font-weight: 800; }
+.badge-text .title { display: block; font-size: 12px; color: #64748b; font-weight: 700; letter-spacing: 1px; margin-bottom: 2px; }
+.badge-text .value { display: block; font-size: 18px; color: #1e293b; font-weight: 800; }
+
+@media (max-width: 768px) {
+    .hero-badge { padding: 8px 20px 8px 8px; gap: 10px; }
+    .badge-icon { width: 40px; height: 40px; font-size: 1.4rem; }
+    .badge-text .title { font-size: 10px; }
+    .badge-text .value { font-size: 15px; }
+}
 
 /* Typewriter Animation Cursor */
 .typewriter-cursor { animation: blink-cursor 0.75s step-end infinite; }
@@ -234,7 +241,7 @@ footer { position: relative; overflow: hidden; }
 /* ========================================================
    HORIZONTAL CHART CSS
    ======================================================== */
-.landscape-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding: 40px 20px; padding-bottom: 250px; scroll-behavior: smooth; background: transparent; }
+.landscape-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding: 10px 20px 250px 20px; scroll-behavior: smooth; background: transparent; }
 .chart-flex-row { display: flex; align-items: center; width: max-content; padding: 0 20px; }
 .chart-node { background: #fdfdfd; color: #a4b0be; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 15px; font-family: 'Noto Serif Bengali', serif; box-shadow: 0 2px 5px rgba(0,0,0,0.04); border-left: 5px solid #dfe4ea; white-space: nowrap; transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: center; transform: scale(0.95); position: relative; overflow: hidden; flex-shrink: 0; }
 .chart-node::after { content: ""; position: absolute; top: 0; left: -150%; width: 60%; height: 100%; background: linear-gradient(to right, rgba(0, 106, 78, 0) 0%, rgba(0, 106, 78, 0.3) 50%, rgba(0, 106, 78, 0) 100%); transform: skewX(-25deg); z-index: 1; pointer-events: none; }
@@ -284,7 +291,4 @@ footer { position: relative; overflow: hidden; }
     .md\:text-right .timeline-card { margin-left: 45px; text-align: left; }
     * { cursor: auto; }
     .cursor-dot, .cursor-outline { display: none; }
-    .hero-badge { padding: 6px 15px 6px 6px; gap: 8px; }
-    .badge-icon { width: 34px; height: 34px; font-size: 1.2rem; }
-    .badge-text .value { font-size: 14px; }
 }
