@@ -237,7 +237,16 @@ html, body {
 /* Activity Cards */
 .activity-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0, 106, 78, 0.08); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; z-index: 1; }
 
+/* GSAP FOUC (Blink) Fix */
 .gsap-reveal { opacity: 0; visibility: hidden; }
+.hero-element,
+.gsap-stagger,
+.timeline-node-green,
+.timeline-content-left,
+.timeline-content-right {
+    opacity: 0;
+}
+
 footer { position: relative; overflow: hidden; }
 
 /* ========================================================
