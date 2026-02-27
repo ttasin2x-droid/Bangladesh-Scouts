@@ -28,6 +28,34 @@ document.querySelectorAll('a, button, .cursor-pointer, .hero-badge').forEach(el 
     });
 });
 
+// Image Lightbox/Modal Function
+function openModal(imgSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    modalImg.src = imgSrc;
+    modal.classList.remove('hidden');
+    
+    setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modalImg.classList.remove('scale-95');
+        modalImg.classList.add('scale-100');
+    }, 10);
+}
+
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    
+    modal.classList.add('opacity-0');
+    modalImg.classList.remove('scale-100');
+    modalImg.classList.add('scale-95');
+    
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        modalImg.src = '';
+    }, 300);
+}
+
 // Typewriter Function 
 function initTypewriter() {
     const text = "সেবাই আমাদের ব্রত, আত্মোৎসর্গ আমাদের দীক্ষা";
