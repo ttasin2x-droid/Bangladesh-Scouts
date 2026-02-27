@@ -135,7 +135,7 @@ setTimeout(() => {
         gsap.utils.toArray('.timeline-content-left').forEach((card) => { gsap.fromTo(card, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out", scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" } }); });
         gsap.utils.toArray('.timeline-content-right').forEach((card) => { gsap.fromTo(card, { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out", scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" } }); });
 
-        // Stagger Sections (Added #netritto and #jamboree)
+        // Stagger Sections
         const sectionsToStagger = ['.stat-box', '#mulniti', '#shakha', '#poricalona', '#regions', '#proshikkhon', '#karyokram', '#sommanona', '#bhobisshot', '#netritto', '#jamboree'];
         sectionsToStagger.forEach(sec => {
             gsap.fromTo(`${sec} .gsap-stagger`, 
@@ -212,19 +212,49 @@ window.addEventListener('scroll', () => {
 const backToTopBtn = document.getElementById('backToTop');
 if(backToTopBtn) backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// Number Counters
+
+// ==========================================
+// NUMBER COUNTERS (BENGALI CONVERTER ADDED)
+// ==========================================
+
+// Function: Convert English Numbers to Bengali
+function toBengaliNum(num) {
+    const banglaDigits = {'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};
+    return num.toString().replace(/[0-9]/g, x => banglaDigits[x]);
+}
+
+// Function: Convert Bengali Numbers to English (so JS can do math)
+function toEnglishNum(str) {
+    if(!str) return "0";
+    const engDigits = {'০':'0','১':'1','২':'2','৩':'3','৪':'4','৫':'5','৬':'6','৭':'7','৮':'8','৯':'9'};
+    return str.toString().replace(/[০-৯]/g, x => engDigits[x]);
+}
+
 const counters = document.querySelectorAll('.counter');
 const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const counter = entry.target;
-            const target = +counter.getAttribute('data-target');
+            const targetStr = counter.getAttribute('data-target');
+            
+            // Convert to english first for mathematical calculation
+            const target = parseFloat(toEnglishNum(targetStr));
+            if(isNaN(target)) return;
+
             const increment = target / 40; 
             let current = 0;
+            
             const updateCounter = () => {
                 current += increment;
-                if (current < target) { counter.innerText = Math.ceil(current); requestAnimationFrame(updateCounter); } 
-                else { counter.innerText = target; }
+                if (current < target) { 
+                    // Show animation counting in Bengali!
+                    counter.innerText = toBengaliNum(Math.ceil(current)); 
+                    requestAnimationFrame(updateCounter); 
+                } 
+                else { 
+                    // Set final value in Bengali!
+                    counter.innerText = toBengaliNum(target); 
+                }
             };
             updateCounter();
             counterObserver.unobserve(counter);
