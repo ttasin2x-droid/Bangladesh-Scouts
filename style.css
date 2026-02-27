@@ -1,6 +1,27 @@
-/* লোকাল ফন্টের কারণে GitHub Pages-এ কনফ্লিক্ট হচ্ছিল। 
-  তাই @font-face মুছে দেওয়া হয়েছে। এখন HTML এর গুগল ফন্ট লিংক সরাসরি কাজ করবে! 
-*/
+/* Custom Fonts Configuration (Local Fonts) */
+@font-face {
+    font-family: 'Bornomala';
+    src: url('fonts/bornomala.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hind';
+    src: url('fonts/hind-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hind';
+    src: url('fonts/hind-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
 
 * { 
     margin: 0; 
@@ -19,7 +40,7 @@
 }
 
 html, body {
-    font-family: 'Hind Siliguri', sans-serif !important;
+    font-family: 'Hind', sans-serif !important;
     background: linear-gradient(135deg, var(--off-white) 0%, #e8f5f1 100%);
     color: #1a202c;
     overflow-x: hidden;
@@ -28,7 +49,7 @@ html, body {
 
 /* Heading Font */
 .font-display { 
-    font-family: 'Noto Serif Bengali', serif !important; 
+    font-family: 'Bornomala', serif !important; 
     line-height: 1.4;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -223,7 +244,7 @@ footer { position: relative; overflow: hidden; }
    ======================================================== */
 .landscape-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding: 10px 20px 250px 20px; scroll-behavior: smooth; background: transparent; }
 .chart-flex-row { display: flex; align-items: center; width: max-content; padding: 0 20px; }
-.chart-node { background: #fdfdfd; color: #a4b0be; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 15px; font-family: 'Noto Serif Bengali', serif; box-shadow: 0 2px 5px rgba(0,0,0,0.04); border-left: 5px solid #dfe4ea; white-space: nowrap; transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: center; transform: scale(0.95); position: relative; overflow: hidden; flex-shrink: 0; }
+.chart-node { background: #fdfdfd; color: #a4b0be; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 15px; font-family: 'Bornomala', serif; box-shadow: 0 2px 5px rgba(0,0,0,0.04); border-left: 5px solid #dfe4ea; white-space: nowrap; transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: center; transform: scale(0.95); position: relative; overflow: hidden; flex-shrink: 0; }
 .chart-node::after { content: ""; position: absolute; top: 0; left: -150%; width: 60%; height: 100%; background: linear-gradient(to right, rgba(0, 106, 78, 0) 0%, rgba(0, 106, 78, 0.3) 50%, rgba(0, 106, 78, 0) 100%); transform: skewX(-25deg); z-index: 1; pointer-events: none; }
 .chart-node.active::after { animation: greenShineSweep 1s ease-in-out forwards; }
 .chart-node.active { color: #1a202c; background: #ffffff; border-left-color: var(--bangladesh-green); transform: scale(1); box-shadow: 0 8px 20px rgba(0, 106, 78, 0.12); }
