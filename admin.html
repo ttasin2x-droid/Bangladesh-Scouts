@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - BD Scouts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #f0fdf4; font-family: sans-serif; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div id="login-section" class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+        <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-green-800">অ্যাডমিন লগইন</h2>
+        </div>
+        <form id="login-form" class="space-y-4">
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">ইমেইল</label>
+                <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:border-green-500" required>
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1">পাসওয়ার্ড</label>
+                <input type="password" id="password" class="w-full px-4 py-2 border rounded-lg focus:border-green-500" required>
+            </div>
+            <p id="error-msg" class="text-red-500 text-sm hidden"></p>
+            <button type="submit" class="w-full bg-green-600 text-white font-bold py-2 rounded-lg hover:bg-green-700">লগইন করুন</button>
+        </form>
+    </div>
+
+    <div id="dashboard-section" class="bg-white p-6 md:p-10 rounded-2xl shadow-xl w-full max-w-5xl hidden my-10">
+        <div class="flex justify-between items-center mb-6 border-b pb-4">
+            <h2 class="text-2xl font-bold text-green-800">ওয়েবসাইট এডিটর প্যানেল</h2>
+            <button id="logout-btn" class="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-red-600">লগআউট</button>
+        </div>
+
+        <form id="content-form" class="space-y-6">
+            
+            <div class="bg-gray-50 p-5 rounded-xl border">
+                <h3 class="font-bold text-lg mb-3">মেইন টেক্সট (Hero Section)</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold mb-1">শিরোনাম</label>
+                        <input type="text" id="hero-title" class="w-full px-3 py-2 border rounded-lg">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-1">সাব-টাইটেল</label>
+                        <textarea id="hero-subtitle" rows="2" class="w-full px-3 py-2 border rounded-lg"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-5 rounded-xl border">
+                <h3 class="font-bold text-lg mb-3">পরিসংখ্যান (Stats Numbers)</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div><label class="block text-sm font-bold mb-1">প্রতিষ্ঠার সাল</label><input type="text" id="stat-1" class="w-full px-3 py-2 border rounded-lg"></div>
+                    <div><label class="block text-sm font-bold mb-1">WOSM সাল</label><input type="text" id="stat-2" class="w-full px-3 py-2 border rounded-lg"></div>
+                    <div><label class="block text-sm font-bold mb-1">সদস্য (টেক্সট)</label><input type="text" id="stat-3" class="w-full px-3 py-2 border rounded-lg"></div>
+                    <div><label class="block text-sm font-bold mb-1">জেলা সংখ্যা</label><input type="text" id="stat-4" class="w-full px-3 py-2 border rounded-lg"></div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-5 rounded-xl border">
+                <h3 class="font-bold text-lg mb-3">সোশ্যাল ও গ্লোবাল লিংকস</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div><label class="block text-sm font-bold mb-1">ফেসবুক পেজ লিংক</label><input type="url" id="link-fb" class="w-full px-3 py-2 border rounded-lg"></div>
+                    <div><label class="block text-sm font-bold mb-1">ফেসবুক গ্রুপ লিংক</label><input type="url" id="link-group" class="w-full px-3 py-2 border rounded-lg"></div>
+                    <div><label class="block text-sm font-bold mb-1">BS ID লগইন লিংক</label><input type="url" id="link-bsid" class="w-full px-3 py-2 border rounded-lg"></div>
+                    <div><label class="block text-sm font-bold mb-1">Messengers of Peace লিংক</label><input type="url" id="link-mop" class="w-full px-3 py-2 border rounded-lg"></div>
+                    <div><label class="block text-sm font-bold mb-1">Ticket to Life লিংক</label><input type="url" id="link-ttl" class="w-full px-3 py-2 border rounded-lg"></div>
+                </div>
+            </div>
+
+            <div class="text-center pt-4">
+                <button type="submit" id="save-btn" class="bg-green-600 text-white font-bold py-3 px-10 rounded-full hover:bg-green-700 transition shadow-lg text-lg">আপডেট করুন</button>
+                <p id="success-msg" class="text-green-600 font-bold mt-3 hidden">✅ ডেটা সফলভাবে আপডেট হয়েছে!</p>
+            </div>
+        </form>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
