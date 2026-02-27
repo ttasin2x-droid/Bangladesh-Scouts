@@ -34,17 +34,18 @@
     --off-white: #F8FAFC;
 }
 
-body {
-    font-family: 'Hind Siliguri', sans-serif;
+/* FIX: Tailwind এর ফন্ট ওভাররাইড করতে html এবং !important অ্যাড করা হয়েছে */
+html, body {
+    font-family: 'Hind Siliguri', sans-serif !important;
     background: linear-gradient(135deg, var(--off-white) 0%, #e8f5f1 100%);
     color: #1a202c;
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
-/* Fix for Text Clipping */
+/* FIX: হেডিং ফন্টেও !important অ্যাড করা হয়েছে */
 .font-display { 
-    font-family: 'Noto Serif Bengali', serif; 
+    font-family: 'Noto Serif Bengali', serif !important; 
     line-height: 1.4;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -163,7 +164,7 @@ body {
 @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
 
 /* ========================================================
-   Stats Counter (Smaller, Compact & Internally Animated)
+   Stats Counter
    ======================================================== */
 .stat-box { 
     background: linear-gradient(135deg, var(--bangladesh-dark-green), var(--bangladesh-light-green), var(--bangladesh-green), var(--bangladesh-dark-green)); 
