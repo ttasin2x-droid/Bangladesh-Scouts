@@ -41,10 +41,10 @@
 
     <div class="progress-container"><div class="progress-bar-green" id="progressBar"></div></div>
 
-    <nav class="fixed w-full z-50 nav-green py-3 transition-all duration-300" id="navbar">
+    <nav class="fixed top-3 left-0 right-0 mx-auto w-[95%] max-w-7xl z-50 nav-green py-3 rounded-2xl transition-all duration-300" id="navbar">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center relative z-50">
-                <div class="flex items-center gap-2 cursor-pointer float-anim" onclick="window.open('https://www.scouts.gov.bd/', '_blank')">
+                <div class="flex items-center gap-2 cursor-pointer float-slow" onclick="window.open('https://www.scouts.gov.bd/', '_blank')">
                     <img src="photos/scout-logo.webp" alt="BD Scouts Logo" class="w-10 h-10 drop-shadow-md cursor-none">
                     <span class="text-xl font-bold gradient-text-green font-display drop-shadow-sm pt-1">বাংলাদেশ স্কাউটস</span>
                 </div>
@@ -60,7 +60,7 @@
                 </button>
             </div>
             
-            <div id="mobileMenu" class="mobile-menu-container lg:hidden flex flex-col space-y-3 text-center text-sm font-bold border-t border-green-100 absolute left-0 right-0 bg-white/95 backdrop-blur-lg rounded-b-xl shadow-lg">
+            <div id="mobileMenu" class="mobile-menu-container lg:hidden flex flex-col space-y-3 text-center text-sm font-bold border border-white/30 absolute left-0 right-0 mt-2 bg-white/20 backdrop-blur-xl rounded-2xl shadow-lg">
                 <a href="#itihas" class="block pt-2 text-gray-800 hover:text-green-700 mobile-link">ইতিহাস</a>
                 <a href="#netritto" class="block text-gray-800 hover:text-green-700 mobile-link">নেতৃত্ব</a>
                 <a href="#jamboree" class="block text-gray-800 hover:text-green-700 mobile-link">জাম্বোরি</a>
@@ -69,7 +69,6 @@
             </div>
         </div>
     </nav>
-
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div class="absolute inset-0 z-0 opacity-30">
             <div class="absolute top-20 right-[15%] w-72 h-72 bg-green-400 rounded-full mix-blend-multiply filter blur-[60px] float-anim parallax-bg" data-speed="0.4"></div>
