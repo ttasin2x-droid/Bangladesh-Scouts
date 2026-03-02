@@ -312,8 +312,8 @@ window.addEventListener('scroll', () => {
     
     const navbar = document.getElementById('navbar');
     if(navbar) {
-        if (winScroll > 30) { navbar.classList.add('shadow-md', 'bg-white/95'); }
-        else { navbar.classList.remove('shadow-md', 'bg-white/95'); }
+        if (winScroll > 30) { navbar.classList.add('shadow-md'); }
+        else { navbar.classList.remove('shadow-md'); }
     }
 });
 
