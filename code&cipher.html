@@ -228,9 +228,67 @@
             .cipher-card { padding: 20px; } 
             .back-btn span { display: none; } /* Hide text on mobile, keep icon */
         }
+        
+        /* --- Warning Popup Styles (Compact Version) --- */
+        .popup-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(8px);
+            z-index: 99999; display: flex; align-items: center; justify-content: center;
+            opacity: 1; visibility: visible; transition: all 0.4s ease;
+        }
+        .popup-overlay.hidden {
+            opacity: 0; visibility: hidden; pointer-events: none;
+        }
+        .popup-card {
+            background: var(--card-bg); width: 90%; max-width: 420px;
+            border-radius: 20px; padding: 25px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            border: 1px solid var(--danger); transform: translateY(0) scale(1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-align: center;
+        }
+        .popup-overlay.hidden .popup-card { transform: translateY(20px) scale(0.95); }
+        .popup-icon { font-size: 3em; color: var(--danger); margin-bottom: 10px; animation: pulseWarning 2s infinite; display: inline-block; }
+        .popup-title { color: var(--danger); font-size: 1.5em; font-weight: 800; margin-bottom: 15px; font-family: 'Outfit', sans-serif; }
+        .popup-message {
+            background: var(--warning-bg); color: var(--text-main); padding: 15px;
+            border-radius: 12px; border-left: 4px solid var(--danger); font-size: 0.9em;
+            line-height: 1.5; text-align: left; margin-bottom: 20px; box-shadow: var(--inner-shadow);
+        }
+        .popup-checkbox-area {
+            display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;
+            cursor: pointer; color: var(--text-muted); font-weight: 600; font-size: 0.85em; text-align: left;
+        }
+        .popup-checkbox-area input[type="checkbox"] {
+            width: 18px; height: 18px; margin-top: 2px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0;
+        }
+        .btn-popup { width: 100%; padding: 12px; font-size: 1em; border-radius: 14px; }
+        .btn-popup:disabled {
+            background: var(--input-bg); color: var(--text-muted); cursor: not-allowed;
+            box-shadow: none; transform: none; border: 2px solid var(--border-color);
+        }
+        @keyframes pulseWarning { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
+    <div class="popup-overlay" id="warningOverlay">
+        <div class="popup-card">
+            <i class="ph-fill ph-warning-octagon popup-icon"></i>
+            <h2 class="popup-title">সতর্কবার্তা</h2>
+            <div class="popup-message">
+                <strong>সতর্কতা:</strong> এই টুলটি শুধুমাত্র শেখার এবং ক্যাম্পের আগে নিজেকে প্রস্তুত করার উদ্দেশ্যে তৈরি করা হয়েছে। কোনো স্কাউট ক্যাম্পে বা মূল্যায়নের সময় এটি ব্যবহার করা সম্পূর্ণ নিষেধ! 
+                <br><br>
+                যদি কোনো ক্যাম্প বা মূল্যায়নের সময় এটি ব্যবহার করতে গিয়ে কেউ ধরা পড়েন, তবে তার জন্য কোনোভাবেই ডেভেলপার (Tanvir Tasin) দায়ী থাকবেন না।
+            </div>
+            <label class="popup-checkbox-area">
+                <input type="checkbox" id="consentCheckbox" onchange="checkConsent()">
+                <span>আমি উপরের শর্তাবলী পড়েছি এবং মেনে চলব।</span>
+            </label>
+            <button class="btn btn-popup" id="agreeBtn" onclick="enterApp()" disabled>
+                <i class="ph-bold ph-check-circle"></i> OK, I Agree
+            </button>
+        </div>
+    </div>
+
     <div class="container">
         
         <a href="javascript:history.back()" class="back-btn">
@@ -543,6 +601,32 @@
     <div id="toast"><i class="ph-bold ph-check-circle"></i> Action Successful!</div>
 
     <script>
+        // --- Warning Popup Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // পপআপ ওপেন থাকা অবস্থায় ব্যাকগ্রাউন্ড স্ক্রল বন্ধ রাখা
+            document.body.style.overflow = 'hidden';
+        });
+
+        function checkConsent() {
+            const checkbox = document.getElementById('consentCheckbox');
+            const btn = document.getElementById('agreeBtn');
+            
+            if (checkbox.checked) {
+                btn.disabled = false;
+                btn.classList.add('btn-danger'); // এনাবেল হলে কালার চেঞ্জ হবে
+            } else {
+                btn.disabled = true;
+                btn.classList.remove('btn-danger');
+            }
+        }
+
+        function enterApp() {
+            const overlay = document.getElementById('warningOverlay');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // ব্যাকগ্রাউন্ড স্ক্রল আবার চালু করা
+            showToast("<i class='ph-bold ph-shield-check'></i> Welcome to Scout Decoder!", "success");
+        }
+
         // --- 1. Theme Management ---
         function toggleTheme() {
             const body = document.body;
