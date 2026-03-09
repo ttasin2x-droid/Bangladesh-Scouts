@@ -204,6 +204,10 @@ function triggerConfetti() {
 }
 
 function initSiteAnimations() {
+    if (typeof gsap !== "undefined") {
+        gsap.set(".hero-element", { autoAlpha: 0, y: 30 });
+    }
+
     setTimeout(() => {
         const preloader = document.getElementById('preloader');
         if(preloader){
@@ -214,12 +218,15 @@ function initSiteAnimations() {
                 initTypewriter(); 
                 
                 if (typeof gsap !== "undefined") {
-                    gsap.fromTo(".hero-element", 
-                        { y: 30, opacity: 0 }, 
-                        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power2.out" }
-                    );
+                    gsap.to(".hero-element", { 
+                        autoAlpha: 1, 
+                        y: 0, 
+                        duration: 1.2, 
+                        stagger: 0.15, 
+                        ease: "power3.out" 
+                    });
                 }
-            }, 600);
+            }, 800);
         }
     }, 500);
 
