@@ -95,7 +95,7 @@ html, body {
     z-index: 999999; display: flex; justify-content: center;
     align-items: center; flex-direction: column; transition: opacity 0.8s ease-out;
 }
-.scout-loader { position: relative; width: 80px; height: 80px; margin-bottom: 20px; }
+.scout-loader { position: relative; width: 90px; height: 90px; margin-bottom: 20px; }
 .scout-loader::before, .scout-loader::after {
     content: ''; position: absolute; inset: 0; border-radius: 50%;
     border: 3px solid transparent; border-top-color: var(--bangladesh-green);
@@ -105,6 +105,12 @@ html, body {
 .scout-loader::after { border-top-color: var(--bangladesh-red); animation-duration: 2.5s; animation-direction: reverse; box-shadow: 0 0 15px rgba(244, 42, 65, 0.4); }
 
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Hero Element Smooth Load Fix */
+.hero-element { 
+    opacity: 0; 
+    visibility: hidden; 
+}
 
 /* Hero Badges */
 .hero-badge {
